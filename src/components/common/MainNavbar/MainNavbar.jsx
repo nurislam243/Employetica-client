@@ -10,42 +10,85 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
-
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 const MainNavbar = () => {
+  const { user, logOut } = useAuth();
+
   return (
-    <Navbar fluid rounded>
-      <NavbarBrand href="https://flowbite-react.com">
-        <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+    <Navbar fluid className="fixed z-50 w-full shadow-md bg-white dark:bg-gray-900">
+      <NavbarBrand href="/">
+        <img src="/favicon.svg" className="mr-2 h-6 sm:h-9" alt="Employetica Logo" />
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          Employetica
+        </span>
       </NavbarBrand>
-      <div className="flex md:order-2">
-        <Dropdown
-          arrowIcon={false}
-          inline
-          label={
-            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
-          }
-        >
-          <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-          </DropdownHeader>
-          <DropdownItem>Dashboard</DropdownItem>
-          <DropdownItem>Settings</DropdownItem>
-          <DropdownItem>Earnings</DropdownItem>
-          <DropdownDivider />
-          <DropdownItem>Sign out</DropdownItem>
-        </Dropdown>
+
+      <div className="flex md:order-2 items-center gap-2">
+        {user ? (
+          <>
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={
+                <Avatar
+                  alt="User avatar"
+                  img={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar.png"}
+                  rounded
+                />
+              }
+            >
+              <DropdownHeader>
+                <span className="block text-sm">{user?.displayName || "User"}</span>
+                <span className="block truncate text-sm font-medium">
+                  {user?.email}
+                </span>
+              </DropdownHeader>
+              <DropdownItem>
+                <Link to="/dashboard">Dashboard</Link>
+              </DropdownItem>
+              <DropdownItem>
+                <Link to="/profile">Profile</Link>
+              </DropdownItem>
+              <DropdownDivider />
+              <DropdownItem onClick={logOut}>Logout</DropdownItem>
+            </Dropdown>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="btn btn-sm bg-cyan-600 text-white px-4 py-1 rounded hover:bg-cyan-700 transition">
+                Login
+              </button>
+            </Link>
+            <Link to="/register">
+              <button className="btn btn-sm border px-4 py-1 rounded hover:bg-gray-200 transition">
+                Register
+              </button>
+            </Link>
+          </>
+        )}
         <NavbarToggle />
       </div>
+
       <NavbarCollapse>
-        <NavbarLink href="#" active>
+        <NavbarLink as={NavLink} to="/" end>
           Home
         </NavbarLink>
-        <NavbarLink href="#">About</NavbarLink>
-        <NavbarLink href="#">Services</NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
+        <NavbarLink as={NavLink} to="/about">
+          About
+        </NavbarLink>
+        <NavbarLink as={NavLink} to="/services">
+          Services
+        </NavbarLink>
+        <NavbarLink as={NavLink} to="/contact">
+          Contact
+        </NavbarLink>
+        {user && (
+          <NavbarLink as={NavLink} to="/dashboard">
+            Dashboard
+          </NavbarLink>
+        )}
       </NavbarCollapse>
     </Navbar>
   );
