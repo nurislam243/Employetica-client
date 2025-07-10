@@ -35,7 +35,7 @@ const slides = [
 
 const Banner = () => {
   return (
-    <div className="min-h-[80vh] w-full">
+    <div className="h-[83vh] w-full">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -48,12 +48,12 @@ const Banner = () => {
         {slides.map(slide => (
           <SwiperSlide key={slide.id}>
             <div
-              className="relative h-[80vh] w-full bg-cover bg-center flex items-center justify-center"
+              className="relative h-[83vh] w-full bg-cover bg-center flex items-center justify-center"
               style={{
                 backgroundImage: `url(${slide.image})`,
               }}
             >
-              <div className="absolute inset-0 bg-black/30 bg-opacity-60"></div>
+              <div className="absolute inset-0 bg-black/65 bg-opacity-60"></div>
               <div className="relative z-10 text-center text-white px-4 max-w-3xl">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl mb-6">{slide.subtitle}</p>

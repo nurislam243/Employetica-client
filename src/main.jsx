@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+// import { Flowbite } from "flowbite-react";
 import './index.css'
 
 import { router } from './router/router.jsx'
@@ -7,6 +8,6 @@ import { RouterProvider } from 'react-router'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
   </StrictMode>,
 )

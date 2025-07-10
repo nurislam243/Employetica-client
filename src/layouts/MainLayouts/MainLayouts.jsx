@@ -1,13 +1,28 @@
 import { Outlet } from 'react-router';
-import Footer from '../../components/common/Footer/Footer';
-import MainNavbar from '../../components/common/MainNavbar/MainNavbar';
+import MainFooter from '../../components/common/Footer/Footer';
+import Navbar from '../../components/common/Navbar/Navbar';
+import { useEffect, useState } from 'react';
 
 const MainLayouts = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+
+    // Scroll effect to shrink navbar height
+    useEffect(() => {
+        const handleScroll = () => {
+        setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <div>
-            <MainNavbar></MainNavbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
+            <Navbar isScrolled={isScrolled}></Navbar>
+            <div className={`${isScrolled ? 'pt-[64px]' : 'pt-[44px]'}`}>
+                <Outlet></Outlet>
+            </div>
+            <MainFooter></MainFooter>
         </div>
     );
 };
