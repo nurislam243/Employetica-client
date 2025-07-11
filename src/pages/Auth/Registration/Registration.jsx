@@ -1,18 +1,20 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import axios from "axios";
-import { auth } from "../../../firebase/firebase.init";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Registration = () => {
+  const { user, createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
     setError,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
+  const axiosSecure = useAxiosSecure();
 
   const [loading, setLoading] = useState(false);
   const password = watch("password");
@@ -29,40 +31,38 @@ const Registration = () => {
       photo,
     } = data;
 
-    // photo validation
-    if (!photo[0]) {
-      return Swal.fire("Error", "Please upload a photo", "error");
-    }
+    // if (!photo[0]) {
+    //   return Swal.fire("Error", "Please upload a photo", "error");
+    // }
 
     setLoading(true);
 
     try {
       // 1. Upload image to imgbb
-      const formData = new FormData();
-      formData.append("image", photo[0]);
-      const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
-      const imgRes = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-        formData
-      );
-      const photoURL = imgRes.data.data.display_url;
+      // const formData = new FormData();
+      // formData.append("image", photo[0]);
+      // const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
+      // const imgRes = await axios.post(
+      //   `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+      //   formData
+      // );
+      // const photoURL = imgRes.data.data.display_url;
 
       // 2. Create user in Firebase
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      await updateProfile(userCredential.user, {
-        displayName: name,
-        photoURL,
-      });
+      await createUser(email, password);
 
-      // 3. Save user to DB
+      // 3. Update profile in Firebase
+      const userProfile = {
+        displayName: name,
+        // photoURL,
+      };
+      await updateUserProfile(userProfile);
+
+      // 4. Save user to DB
       const newUser = {
         name,
         email,
-        photo: photoURL,
+        // photo: photoURL,
         role,
         bank_account_no,
         salary,
@@ -71,9 +71,13 @@ const Registration = () => {
         createdAt: new Date(),
       };
 
-      await axios.post(`${import.meta.env.VITE_API_URL}/users`, newUser);
+      axiosSecure.post('/users', newUser)
+      .then(res => {
+        if (res.data.insertedId) {
+          Swal.fire("Success", "Account created successfully!", "success");
+        }
+      })
 
-      Swal.fire("Success", "Account created successfully!", "success");
     } catch (err) {
       console.error(err);
       if (err.code === "auth/email-already-in-use") {
@@ -96,7 +100,7 @@ const Registration = () => {
         {/* Name */}
         <input
           {...register("name", { required: "Name is required" })}
-          className="input input-bordered w-full"
+          className="input input-bordered rounded-lg w-full"
           placeholder="Full Name"
         />
         {errors.name && (
@@ -107,7 +111,7 @@ const Registration = () => {
         <input
           type="email"
           {...register("email", { required: "Email is required" })}
-          className="input input-bordered w-full"
+          className="input input-bordered rounded-lg w-full"
           placeholder="Email"
         />
         {errors.email && (
@@ -130,7 +134,7 @@ const Registration = () => {
                 "Password must include at least one special character",
             },
           })}
-          className="input input-bordered w-full"
+          className="input rounded-lg input-bordered w-full"
           placeholder="Password"
         />
         {errors.password && (
@@ -140,7 +144,7 @@ const Registration = () => {
         {/* Role */}
         <select
           {...register("role", { required: "Please select a role" })}
-          className="select select-bordered w-full"
+          className="select select-bordered rounded-lg w-full"
         >
           <option value="">Select Role</option>
           <option value="Employee">Employee</option>
@@ -155,7 +159,7 @@ const Registration = () => {
           {...register("designation", {
             required: "Designation is required",
           })}
-          className="input input-bordered w-full"
+          className="input rounded-lg input-bordered w-full"
           placeholder="Designation (e.g., Digital Marketer)"
         />
         {errors.designation && (
@@ -167,7 +171,7 @@ const Registration = () => {
           {...register("bank_account_no", {
             required: "Bank account number is required",
           })}
-          className="input input-bordered w-full"
+          className="input rounded-lg input-bordered w-full"
           placeholder="Bank Account Number"
         />
         {errors.bank_account_no && (
@@ -180,7 +184,7 @@ const Registration = () => {
         <input
           type="number"
           {...register("salary", { required: "Salary is required" })}
-          className="input input-bordered w-full"
+          className="input input-bordered rounded-lg w-full"
           placeholder="Salary"
         />
         {errors.salary && (
@@ -188,21 +192,21 @@ const Registration = () => {
         )}
 
         {/* Photo */}
-        <input
+        {/* <input
           type="file"
           accept="image/*"
           {...register("photo", { required: "Please upload your photo" })}
-          className="file-input file-input-bordered w-full"
+          className="file-input rounded-lg file-input-bordered w-full"
         />
         {errors.photo && (
           <p className="text-red-500 text-sm">{errors.photo.message}</p>
-        )}
+        )} */}
 
         {/* Submit Button */}
         <button
           type="submit"
           disabled={loading}
-          className="btn btn-primary w-full"
+          className="btn btn-primary rounded-lg w-full"
         >
           {loading ? "Registering..." : "Register"}
         </button>

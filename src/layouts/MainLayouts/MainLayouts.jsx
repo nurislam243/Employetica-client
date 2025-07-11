@@ -19,7 +19,7 @@ const MainLayouts = () => {
     return (
         <div>
             <Navbar isScrolled={isScrolled}></Navbar>
-            <div className={`${isScrolled ? 'pt-[64px]' : 'pt-[44px]'}`}>
+            <div className={`${isScrolled ? 'pt-[64px] min-h-[calc(100vh-64px)]' : 'pt-[44px] min-h-[calc(100vh-44px)]'}`}>
                 <Outlet></Outlet>
             </div>
             <MainFooter></MainFooter>

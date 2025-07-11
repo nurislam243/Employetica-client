@@ -6,10 +6,11 @@ import useAuth from "../../../hooks/useAuth";
 const Navbar = ({isScrolled}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
 
 
   const handleLogout = () => {
+    logOut();
     console.log("Logging out...");
     // TODO: Add your logout logic here
   };
