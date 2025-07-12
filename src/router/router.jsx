@@ -6,6 +6,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import Login from "../pages/Auth/Login/Login";
 import DashboardLayouts from "../layouts/DashboardLayouts/DashboardLayouts";
 import WorkSheet from "../pages/Dashboard/WorkSheet/WorkSheet";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 
 
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: 'work-sheet',
         Component: WorkSheet
+      },
+      {
+        path: 'payment-history',
+        Component: PaymentHistory
       }
     ]
   }
