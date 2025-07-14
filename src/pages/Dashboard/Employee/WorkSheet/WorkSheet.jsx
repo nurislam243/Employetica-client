@@ -2,25 +2,68 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import WorkSheetTable from "./WorkSheetTable";
+import Swal from "sweetalert2";
+import useAuth from "../../../../hooks/useAuth";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+
 
 const WorkSheet = () => {
-  const [task, setTask] = useState("Sales");
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  const [task, setTask] = useState(""); // Empty by default
   const [hours, setHours] = useState("");
   const [date, setDate] = useState(new Date());
   const [entries, setEntries] = useState([]);
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
+    if (!task) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Task Required",
+        text: "Please select a task before submitting.",
+      });
+    }
+
+    if (!hours || Number(hours) <= 0) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Invalid Hours",
+        text: "Please enter a valid number of hours.",
+      });
+    }
+
     const newEntry = {
-      id: Date.now(),
-      task,
-      hours,
-      date: date.toDateString(),
+      email: user?.email,
+      taskType: task,
+      hoursWorked: Number(hours),
+      date: date.toISOString().split("T")[0],
     };
 
-    setEntries([newEntry, ...entries]);
-    setTask("Sales");
-    setHours("");
-    setDate(new Date());
+    try {
+      const res = await axiosSecure.post("/worksheets", newEntry);
+      if (res.data.insertedId) {
+        Swal.fire({
+          icon: "success",
+          title: "Task Added",
+          text: "Your task has been successfully submitted.",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+        setEntries([{ id: Date.now(), ...newEntry }, ...entries]);
+        setTask("");
+        setHours("");
+        setDate(new Date());
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Submission Failed",
+        text: "Please try again later.",
+      });
+      console.error(error);
+    }
   };
 
   return (
@@ -35,11 +78,15 @@ const WorkSheet = () => {
             className="select select-bordered"
             value={task}
             onChange={(e) => setTask(e.target.value)}
+            required
           >
-            <option>Sales</option>
-            <option>Support</option>
-            <option>Content</option>
-            <option>Paper-work</option>
+            <option value="" disabled>
+              Set Task
+            </option>
+            <option value="Sales">Sales</option>
+            <option value="Support">Support</option>
+            <option value="Content">Content</option>
+            <option value="Paper-work">Paper-work</option>
           </select>
         </div>
 
@@ -50,6 +97,7 @@ const WorkSheet = () => {
             className="input input-bordered"
             value={hours}
             onChange={(e) => setHours(e.target.value)}
+            min="1"
           />
         </div>
 
