@@ -1,20 +1,23 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import WorkSheetTable from "./WorkSheetTable";
 import Swal from "sweetalert2";
+
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-
+import useWorksheets from "../../../../hooks/useWorksheets";
+import WorkSheetTable from "./WorkSheetTable";
 
 const WorkSheet = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const [worksheets, isLoading, refetch] = useWorksheets();
 
-  const [task, setTask] = useState(""); // Empty by default
+  const [task, setTask] = useState("");
   const [hours, setHours] = useState("");
   const [date, setDate] = useState(new Date());
-  const [entries, setEntries] = useState([]);
+
+  if (isLoading) return <span>Loading...</span>;
 
   const handleAdd = async () => {
     if (!task) {
@@ -37,7 +40,7 @@ const WorkSheet = () => {
       email: user?.email,
       taskType: task,
       hoursWorked: Number(hours),
-      date: date.toISOString().split("T")[0],
+      date: date.toISOString().split("T")[0], 
     };
 
     try {
@@ -51,18 +54,20 @@ const WorkSheet = () => {
           showConfirmButton: false,
         });
 
-        setEntries([{ id: Date.now(), ...newEntry }, ...entries]);
+        await refetch();
+
+        // Reset form
         setTask("");
         setHours("");
         setDate(new Date());
       }
     } catch (error) {
+      console.error(error);
       Swal.fire({
         icon: "error",
         title: "Submission Failed",
-        text: "Please try again later.",
+        text: "Something went wrong. Please try again.",
       });
-      console.error(error);
     }
   };
 
@@ -70,10 +75,11 @@ const WorkSheet = () => {
     <div className="p-4 space-y-4">
       <h2 className="text-2xl font-bold">Work Sheet</h2>
 
-      {/* Horizontal Form */}
+      {/* Form Section */}
       <div className="flex flex-wrap md:flex-nowrap gap-3 items-end">
+        {/* Task Dropdown */}
         <div className="form-control">
-          <label>Task</label>
+          <label className="label">Task</label>
           <select
             className="select select-bordered"
             value={task}
@@ -90,19 +96,22 @@ const WorkSheet = () => {
           </select>
         </div>
 
+        {/* Hours Worked */}
         <div className="form-control">
-          <label>Hours Worked</label>
+          <label className="label">Hours Worked</label>
           <input
             type="number"
             className="input input-bordered"
             value={hours}
             onChange={(e) => setHours(e.target.value)}
             min="1"
+            placeholder="e.g. 4"
           />
         </div>
 
+        {/* Date Picker */}
         <div className="form-control">
-          <label>Date</label>
+          <label className="label">Date</label>
           <DatePicker
             selected={date}
             onChange={(date) => setDate(date)}
@@ -110,13 +119,14 @@ const WorkSheet = () => {
           />
         </div>
 
+        {/* Submit Button */}
         <button onClick={handleAdd} className="btn btn-primary h-fit">
           Add Task
         </button>
       </div>
 
-      {/* Table */}
-      <WorkSheetTable entries={entries} setEntries={setEntries} />
+      {/* Worksheet Table */}
+      <WorkSheetTable worksheets={worksheets} />
     </div>
   );
 };

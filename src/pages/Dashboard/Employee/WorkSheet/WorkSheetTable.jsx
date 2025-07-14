@@ -2,20 +2,15 @@ import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import EditWorkModal from "./EditWorkModal";
 
-const WorkSheetTable = ({ entries, setEntries }) => {
+const WorkSheetTable = ({ worksheets }) => {
   const [editingEntry, setEditingEntry] = useState(null);
 
   const handleDelete = (id) => {
-    const updated = entries.filter((e) => e.id !== id);
-    setEntries(updated);
+    console.log('delete', id);
   };
 
   const handleUpdate = (updatedEntry) => {
-    const updatedList = entries.map((e) =>
-      e.id === updatedEntry.id ? updatedEntry : e
-    );
-    setEntries(updatedList);
-    setEditingEntry(null);
+    console.log("update", updatedEntry);
   };
 
   return (
@@ -32,11 +27,11 @@ const WorkSheetTable = ({ entries, setEntries }) => {
             </tr>
           </thead>
           <tbody>
-            {entries.map((entry) => (
-              <tr key={entry.id}>
-                <td>{entry.task}</td>
-                <td>{entry.hours}</td>
-                <td>{entry.date}</td>
+            {worksheets.map((sheet) => (
+              <tr key={sheet._id}>
+                <td>{sheet.taskType}</td>
+                <td>{sheet.hoursWorked}</td>
+                <td>{sheet.date}</td>
                 <td>
                   <button onClick={() => setEditingEntry(entry)}>
                     <FaEdit className="text-blue-600" />

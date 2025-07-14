@@ -6,7 +6,7 @@ const useWorksheets = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: worksheets = [], isLoading } = useQuery({
+  const { data: worksheets = [], isLoading, refetch } = useQuery({
     queryKey: ['worksheets', user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -15,7 +15,7 @@ const useWorksheets = () => {
     },
   });
 
-  return [worksheets, isLoading];
+  return [worksheets, isLoading, refetch];
 };
 
 export default useWorksheets;
