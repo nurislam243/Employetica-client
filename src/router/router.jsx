@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <PrivateRoute allowedRoles={["employee", "hr", "admin"]}>
+      <PrivateRoute allowedRoles={["Employee", "HR", "Admin"]}>
         <DashboardLayouts />
       </PrivateRoute>
     ),
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
       {
         path: "work-sheet",
         element: (
-          <PrivateRoute allowedRoles={["employee"]}>
+          <PrivateRoute allowedRoles={["Employee"]}>
             <WorkSheet />
           </PrivateRoute>
         )
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "payment-history",
         element: (
-          <PrivateRoute allowedRoles={["employee"]}>
+          <PrivateRoute allowedRoles={["Employee"]}>
             <PaymentHistory />
           </PrivateRoute>
         )
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
       {
         path: "employee-list",
         element: (
-          <PrivateRoute allowedRoles={["hr"]}>
+          <PrivateRoute allowedRoles={["HR"]}>
             <EmployeeList />
           </PrivateRoute>
         )
@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
       {
         path: "details/:slug",
         element: (
-          <PrivateRoute allowedRoles={["hr"]}>
+          <PrivateRoute allowedRoles={["HR"]}>
             <EmployeeDetails />
           </PrivateRoute>
         )
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
       {
         path: "progress",
         element: (
-          <PrivateRoute allowedRoles={["hr"]}>
+          <PrivateRoute allowedRoles={["HR"]}>
             <Progress />
           </PrivateRoute>
         )
@@ -88,7 +88,7 @@ export const router = createBrowserRouter([
       {
         path: "all-employee-list",
         element: (
-          <PrivateRoute allowedRoles={["admin"]}>
+          <PrivateRoute allowedRoles={["Admin"]}>
             <AllEmployeeList />
           </PrivateRoute>
         )
@@ -96,7 +96,7 @@ export const router = createBrowserRouter([
       {
         path: "payroll",
         element: (
-          <PrivateRoute allowedRoles={["admin"]}>
+          <PrivateRoute allowedRoles={["Admin"]}>
             <Payroll />
           </PrivateRoute>
         )

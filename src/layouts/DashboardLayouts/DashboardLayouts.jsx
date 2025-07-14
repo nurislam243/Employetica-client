@@ -1,10 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet } from "react-router";
 import useAuth from '../../hooks/useAuth';
+import useUserRole from '../../hooks/useUserRole';
 
 
 const DashboardLayouts = () => {
-  const { role } = useAuth();
+  const {role} = useUserRole();
 
   return (
     <div className="drawer lg:drawer-open">
@@ -41,21 +42,21 @@ const DashboardLayouts = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Role-based navigation */}
-          {role === "employee" && (
+          {role === "Employee" && (
             <>
               <li><NavLink to={'work-sheet'}>WorkSheet</NavLink></li>
               <li><NavLink to={'payment-history'}>Payment History</NavLink></li>
             </>
           )}
 
-          {role === "hr" && (
+          {role === "HR" && (
             <>
               <li><NavLink to={'employee-list'}>Employee List</NavLink></li>
               <li><NavLink to={'progress'}>Progress</NavLink></li>
             </>
           )}
 
-          {role === "admin" && (
+          {role === "Admin" && (
             <>
               <li><NavLink to={'all-employee-list'}>All Employee List</NavLink></li>
               <li><NavLink to={'payroll'}>Payroll</NavLink></li>

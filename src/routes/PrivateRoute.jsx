@@ -1,9 +1,11 @@
 // src/routes/PrivateRoute.jsx
 import { Navigate, useLocation } from "react-router";
 import useAuth from "../hooks/useAuth";
+import useUserRole from "../hooks/useUserRole";
 
 const PrivateRoute = ({ children, allowedRoles }) => {
-  const { user, loading, role } = useAuth();
+  const { user, loading } = useAuth();
+  const { role } = useUserRole();
   const location = useLocation();
 
   if (loading) return <div className="text-center">Loading...</div>;

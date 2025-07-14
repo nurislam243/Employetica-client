@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 
 // Import required modules
 import { Pagination, Navigation } from 'swiper/modules';
+import useUserRole from '../../../hooks/useUserRole';
 
 const slides = [
   {
@@ -34,6 +35,8 @@ const slides = [
 ];
 
 const Banner = () => {
+  const {role} = useUserRole();
+  console.log(role);
   return (
     <div className="h-[83vh] w-full">
       <Swiper
