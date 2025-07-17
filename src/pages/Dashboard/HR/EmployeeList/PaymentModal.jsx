@@ -1,49 +1,75 @@
 import { useForm } from "react-hook-form";
 
 const PaymentModal = ({ employee, closeModal }) => {
-  const { register, handleSubmit, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
-      amount: employee.salary,
-      month: "",
-      year: "",
+      amount: employee.salary || 0,
+      month: "",                   
+      year: "",                    
     },
   });
 
+  // 2. Form submit handler
   const onSubmit = (data) => {
-    console.log("Dummy payment request:", data);
+    console.log("Payment request data:", data);
+
     alert(`Payment request sent for ${employee.name}`);
+
     reset();
+
     closeModal();
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded shadow-lg w-96">
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded shadow-lg w-96 max-w-full mx-2">
         <h3 className="text-xl font-semibold mb-4">Pay {employee.name}</h3>
-
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
+          <label className="font-medium">Amount (USD)</label>
           <input
-            {...register("amount")}
+            {...register("amount", { valueAsNumber: true })}
             type="number"
             readOnly
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
           />
+          <label className="font-medium">Month</label>
           <input
-            {...register("month")}
+            {...register("month", { required: "Month is required" })}
             placeholder="Month (e.g., July)"
-            required
-            className="input input-bordered w-full"
+            className={`input input-bordered w-full ${errors.month ? "border-red-500" : ""}`}
           />
+          {errors.month && <p className="text-red-500 text-sm">{errors.month.message}</p>}
+          <label className="font-medium">Year</label>
           <input
-            {...register("year")}
+            {...register("year", {
+              required: "Year is required",
+              pattern: {
+                value: /^\d{4}$/,
+                message: "Enter a valid 4-digit year",
+              },
+            })}
             placeholder="Year (e.g., 2025)"
-            required
-            className="input input-bordered w-full"
+            type="number"
+            className={`input input-bordered w-full ${errors.year ? "border-red-500" : ""}`}
           />
-
+          {errors.year && <p className="text-red-500 text-sm">{errors.year.message}</p>}
           <div className="flex justify-end gap-2 mt-4">
             <button type="submit" className="btn btn-success">Send</button>
-            <button type="button" onClick={closeModal} className="btn btn-outline">Cancel</button>
+            <button
+              type="button"
+              onClick={() => {
+                reset();
+                closeModal();
+              }}
+              className="btn btn-outline"
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>
