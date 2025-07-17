@@ -9,8 +9,8 @@ const EditWorkModal = ({ entry, onClose, onUpdate }) => {
   const handleSubmit = () => {
     const updated = {
       ...entry,
-      task,
-      hours,
+      taskType: task,
+      hoursWorked: hours,
       date: date.toDateString(),
     };
     onUpdate(updated);

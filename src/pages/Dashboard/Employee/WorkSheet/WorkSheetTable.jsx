@@ -52,9 +52,23 @@ const WorkSheetTable = ({ worksheets,  refetch }) => {
   };
 
 
-  const handleUpdate = (updatedEntry) => {
-    console.log("update", updatedEntry);
+  const handleUpdate = async (updatedTask) => {
+    try {
+      const res = await axiosSecure.put(`/task/${updatedTask._id}`, updatedTask);
+      const msg = res.data.message;
+
+      if (msg === "Task updated successfully") {
+        Swal.fire("Success", msg, "success");
+        setEditingEntry(null);
+        refetch();
+      } else if (msg === "No changes made to the task") {
+        Swal.fire("Info", msg, "info");
+      }
+    } catch (err) {
+      Swal.fire("Error", "Failed to update task", "error");
+    }
   };
+
 
   return (
     <>
