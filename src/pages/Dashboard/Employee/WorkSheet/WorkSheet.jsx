@@ -37,6 +37,7 @@ const WorkSheet = () => {
     }
 
     const newEntry = {
+      name: user?.displayName,
       email: user?.email,
       taskType: task,
       hoursWorked: Number(hours),

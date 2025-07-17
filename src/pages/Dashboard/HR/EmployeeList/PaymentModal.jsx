@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
-const PaymentModal = ({ employee, closeModal }) => {
+const PaymentModal = ({ employee, closeModal, refetch }) => {
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -14,16 +16,25 @@ const PaymentModal = ({ employee, closeModal }) => {
     },
   });
 
-  // 2. Form submit handler
-  const onSubmit = (data) => {
-    console.log("Payment request data:", data);
+  const onSubmit = async (data) => {
+    try {
+      const paymentData = {
+        ...data,
+        employeeId: employee._id,
+        employeeName: employee.name,
+        employeeEmail: employee.email,
+      };
 
-    alert(`Payment request sent for ${employee.name}`);
-
-    reset();
-
-    closeModal();
-  };
+      await axiosSecure.post("/salaries", paymentData);
+      alert(`Salary sent to ${employee.name}`);
+      reset();
+      refetch();
+      closeModal();
+    } catch (err) {
+      console.error("Payment failed", err);
+      alert("Something went wrong");
+    }
+  }
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">

@@ -1,26 +1,35 @@
 import { useState } from "react";
-
-const dummyWorkData = [
-  { id: 1, name: "John", task: "Sales", hours: 6, date: "2025-07-10" },
-  { id: 2, name: "John", task: "Support", hours: 5, date: "2025-07-09" },
-  { id: 3, name: "Jane", task: "Content", hours: 7, date: "2025-06-30" },
-  { id: 4, name: "Jane", task: "Sales", hours: 4, date: "2025-06-29" },
-];
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Progress = () => {
   const [selectedName, setSelectedName] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
+  const axiosSecure = useAxiosSecure();
 
-  const filtered = dummyWorkData.filter((item) => {
+  const { data: workData = [], isLoading } = useQuery({
+    queryKey: ['work-records'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/work-records');
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  const filtered = workData.filter((item) => {
     const matchName = selectedName ? item.name === selectedName : true;
     const matchMonth = selectedMonth ? item.date.startsWith(selectedMonth) : true;
     return matchName && matchMonth;
   });
 
-  const totalHours = filtered.reduce((sum, item) => sum + item.hours, 0);
+  const totalHours = filtered.reduce((sum, item) => sum + item.hoursWorked, 0);
 
-  const months = [...new Set(dummyWorkData.map((item) => item.date.slice(0, 7)))];
-  const names = [...new Set(dummyWorkData.map((item) => item.name))];
+  const months = [...new Set(workData.map((item) => item.date.slice(0, 7)))];
+  const names = [...new Set(workData.map((item) => item.name))];
+  console.log(workData);
 
   return (
     <div className="p-6">
@@ -34,7 +43,7 @@ const Progress = () => {
         >
           <option value="">All Employees</option>
           {names.map((name) => (
-            <option key={name}>{name}</option>
+            <option key={name} value={name}>{name}</option>
           ))}
         </select>
 
@@ -45,7 +54,7 @@ const Progress = () => {
         >
           <option value="">All Months</option>
           {months.map((m) => (
-            <option key={m}>{m}</option>
+             <option key={m} value={m}>{m}</option>
           ))}
         </select>
       </div>
@@ -64,10 +73,10 @@ const Progress = () => {
           </thead>
           <tbody>
             {filtered.map((item) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <td>{item.name}</td>
-                <td>{item.task}</td>
-                <td>{item.hours}</td>
+                <td>{item.taskType}</td>
+                <td>{item.hoursWorked}</td>
                 <td>{item.date}</td>
               </tr>
             ))}

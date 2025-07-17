@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
 const dummyUser = {
   name: "John Doe",
@@ -13,6 +13,15 @@ const dummyChartData = [
   { month: "Jun", year: 2025, salary: 900 },
   { month: "Jul", year: 2025, salary: 950 },
 ];
+
+const colors = [
+  "#4A148C", "#00BCD4", "#FF9800", "#8BC34A", "#E91E63",
+  "#3F51B5", "#009688", "#FF5722", "#9C27B0", "#CDDC39",
+  "#2196F3", "#FFC107", "#795548", "#607D8B", "#F44336",
+  "#673AB7", "#03A9F4", "#AED581", "#F06292", "#D4E157",
+  "#BA68C8", "#4DB6AC", "#FFD54F", "#A1887F", "#90A4AE"
+];
+
 
 const EmployeeDetails = () => {
   const { slug } = useParams();
@@ -37,7 +46,11 @@ const EmployeeDetails = () => {
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="salary" fill="#4A148C" />
+            <Bar dataKey="salary">
+              {dummyChartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>

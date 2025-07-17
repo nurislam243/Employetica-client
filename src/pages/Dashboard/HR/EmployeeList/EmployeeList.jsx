@@ -4,33 +4,34 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 import PaymentModal from "./PaymentModal";
 import { Link } from "react-router";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 
 const EmployeeList = () => {
   const axiosSecure = useAxiosSecure();
-  const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
-  // actual data
-  useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const res = await axiosSecure.get("/users/employee");
-        setEmployees(res.data);
-      } catch (error) {
-        console.error("Error fetching employees:", error);
-      }
-    };
+  const { data: employees = [], isLoading, refetch } = useQuery({
+    queryKey: ["employees"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/users/employee");
+      return res.data;
+      },
+  });
 
-    fetchEmployees();
-  }, [axiosSecure]);
-
-  const handleToggleVerification = (id) => {
-    const updated = employees.map((emp) =>
-      emp._id === id ? { ...emp, isVerified: !emp.isVerified } : emp
-    );
-    setEmployees(updated);
+  const handleToggleVerification = async (emp) => {
+    try {
+      await axiosSecure.patch(`/users/verify/${emp._id}`, {
+        isVerified: !emp.isVerified,
+      });
+      alert("Status updated");
+      refetch();
+    } catch (err) {
+      console.error(err);
+      alert("Update failed");
+    }
   };
+
 
   const columns = useMemo(() => [
     {
@@ -46,7 +47,7 @@ const EmployeeList = () => {
       cell: ({ row }) => {
         const emp = row.original;
         return (
-          <button onClick={() => handleToggleVerification(emp._id)} className="text-lg">
+          <button onClick={() => handleToggleVerification(emp)} className="text-lg">
             {emp.isVerified ? <FaCheck className="text-green-600" /> : <FaTimes className="text-red-600" />}
           </button>
         );
@@ -127,6 +128,7 @@ const EmployeeList = () => {
         <PaymentModal
           employee={selectedEmployee}
           closeModal={() => setSelectedEmployee(null)}
+          refetch={refetch}
         />
       )}
     </div>
