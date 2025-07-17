@@ -126,7 +126,7 @@ const WorkSheet = () => {
       </div>
 
       {/* Worksheet Table */}
-      <WorkSheetTable worksheets={worksheets} />
+      <WorkSheetTable worksheets={worksheets} refetch={refetch} />
     </div>
   );
 };

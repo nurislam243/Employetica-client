@@ -2,8 +2,8 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 
 const EditWorkModal = ({ entry, onClose, onUpdate }) => {
-  const [task, setTask] = useState(entry.task);
-  const [hours, setHours] = useState(entry.hours);
+  const [task, setTask] = useState(entry.taskType);
+  const [hours, setHours] = useState(entry.hoursWorked);
   const [date, setDate] = useState(new Date(entry.date));
 
   const handleSubmit = () => {
