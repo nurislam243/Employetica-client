@@ -79,7 +79,7 @@ const EmployeeList = () => {
     {
       header: "Details",
       cell: ({ row }) => (
-        <Link to={`/dashboard/details/${row.original._id}`} className="btn btn-outline btn-sm">
+        <Link to={`/dashboard/details/${row.original.email}`} className="btn btn-outline btn-sm">
           View
         </Link>
       ),

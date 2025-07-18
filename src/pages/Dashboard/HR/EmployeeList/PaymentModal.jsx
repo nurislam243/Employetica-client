@@ -25,8 +25,8 @@ const PaymentModal = ({ employee, closeModal, refetch }) => {
         employeeEmail: employee.email,
       };
 
-      await axiosSecure.post("/salaries", paymentData);
-      alert(`Salary sent to ${employee.name}`);
+      await axiosSecure.post("/payments", paymentData);
+      alert(`Payment request sent for ${employee.name}. Awaiting admin approval.`);
       reset();
       refetch();
       closeModal();
@@ -34,7 +34,8 @@ const PaymentModal = ({ employee, closeModal, refetch }) => {
       console.error("Payment failed", err);
       alert("Something went wrong");
     }
-  }
+  };
+
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
