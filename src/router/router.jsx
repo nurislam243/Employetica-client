@@ -20,6 +20,7 @@ import Progress from "../pages/Dashboard/HR/Progress/Progress";
 import AllEmployeeList from "../pages/Dashboard/Admin/AllEmployeeList/AllEmployeeList";
 import Payroll from "../pages/Dashboard/Admin/Payroll/Payroll";
 import PrivateRoute from "../routes/PrivateRoute";
+import ContactMessagesAdmin from "../pages/Dashboard/Admin/ContactMessagesAdmin/ContactMessagesAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute allowedRoles={["Admin"]}>
             <Payroll />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: "contact-messages",
+        element: (
+          <PrivateRoute allowedRoles={["Admin"]}>
+            <ContactMessagesAdmin />
           </PrivateRoute>
         )
       },

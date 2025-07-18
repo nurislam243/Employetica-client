@@ -29,7 +29,7 @@ const EmployeeDetails = () => {
   const { data: payments = [], isLoading: loadingPayments, error: paymentsError } = useQuery({
     queryKey: ["payments", slug],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/payments?email=${slug}`);
+      const res = await axiosSecure.get(`/payments/employee?email=${slug}`);
       return res.data;
     },
     enabled: !!slug,

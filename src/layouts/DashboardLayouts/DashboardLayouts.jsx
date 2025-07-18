@@ -60,6 +60,7 @@ const DashboardLayouts = () => {
             <>
               <li><NavLink to={'all-employee-list'}>All Employee List</NavLink></li>
               <li><NavLink to={'payroll'}>Payroll</NavLink></li>
+              <li><NavLink to={'contact-messages'}>Contact Messages</NavLink></li>
             </>
           )}
         </ul>

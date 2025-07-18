@@ -3,28 +3,48 @@ import { useState } from 'react';
 import EmployeeTableView from './EmployeeTableView';
 import EmployeeCardView from './EmployeeCardView';
 import useVerifiedUsers from '../../../../hooks/useVerifiedUsers';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 
 const AllEmployeeList = () => {
   const [view, setView] = useState('table');
+  const [salaryInput, setSalaryInput] = useState({});
   const { employees, isLoading, refetch } = useVerifiedUsers();
+  const axiosSecure = useAxiosSecure();
 
 
 
 
-  // Handlers for actions - replace alerts with your API calls and then refetch
-  const handleMakeHR = (id) => {
-    alert(`Make user ${id} HR - implement API call`);
-    refetch();
+  const handleMakeHR = async (id) => {
+    try {
+      await axiosSecure.patch(`/users/make-hr/${id}`);
+      alert(`User ${id} has been made HR successfully.`);
+      refetch();
+    } catch (error) {
+      console.error(error);
+      alert('Failed to update user role.');
+    }
   };
 
-  const handleFire = (id) => {
-    alert(`Fire user ${id} - implement API call`);
-    refetch();
+  const handleFire = async (id) => {
+    try {
+      await axiosSecure.patch(`/users/fire/${id}`);
+      alert(`User ${id} has been fired.`);
+      refetch();
+    } catch (error) {
+      console.error(error);
+      alert('Failed to fire user.');
+    }
   };
 
-  const handleAdjustSalary = (id, newSalary) => {
-    alert(`Adjust salary of user ${id} to ${newSalary} - implement API call`);
-    refetch();
+  const handleAdjustSalary = async (id, newSalary) => {
+    try {
+      await axiosSecure.patch(`/users/salary/${id}`, { newSalary });
+      alert(`Salary of user ${id} updated to ${newSalary}.`);
+      refetch();
+    } catch (error) {
+      console.error(error);
+      alert('Failed to update salary.');
+    }
   };
 
   if (isLoading)
@@ -51,6 +71,8 @@ const AllEmployeeList = () => {
           employees={employees}
           onMakeHR={handleMakeHR}
           onFire={handleFire}
+          salaryInput={salaryInput}
+          setSalaryInput={setSalaryInput}
           onAdjustSalary={handleAdjustSalary}
         />
       ) : (
@@ -58,6 +80,8 @@ const AllEmployeeList = () => {
           employees={employees}
           onMakeHR={handleMakeHR}
           onFire={handleFire}
+          salaryInput={salaryInput}
+          setSalaryInput={setSalaryInput}
           onAdjustSalary={handleAdjustSalary}
         />
       )}

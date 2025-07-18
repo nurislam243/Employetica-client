@@ -1,9 +1,37 @@
+import { useState } from "react";
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ContactUs = () => {
-  const handleSubmit = (e) => {
+   const axiosSecure = useAxiosSecure();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted");
+
+    try {
+      const res = await axiosSecure.post('/contact-us', formData);
+      console.log(res.data);
+
+      if (res.data.success) {
+        Swal.fire('Success', 'Your message has been sent!', 'success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        Swal.fire('Error', 'Failed to send message.', 'error');
+      }
+    } catch (error) {
+      Swal.fire('Error', error.response?.data?.message || 'Something went wrong.', 'error');
+    }
   };
 
   return (
@@ -62,42 +90,52 @@ const ContactUs = () => {
         {/* Right Column - Form */}
         <div className="bg-base-200 rounded-lg shadow-lg p-10 space-y-6">
           <h3 className="text-2xl font-bold text-center text-primary mb-2">Send Us a Message</h3>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="label">
-                <span className="label-text font-medium">Your Name</span>
-              </label>
-              <input
-                type="text"
-                className="input input-bordered w-full"
-                placeholder="Your full name"
-                required
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="label-text font-medium">Your Email</span>
-              </label>
-              <input
-                type="email"
-                className="input input-bordered w-full"
-                placeholder="email@example.com"
-                required
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="label-text font-medium">Message</span>
-              </label>
-              <textarea
-                className="textarea textarea-bordered w-full"
-                rows="5"
-                placeholder="Write your message here..."
-                required
-              ></textarea>
-            </div>
-            <button type="submit" className="btn btn-primary w-full">Submit Message</button>
-          </form>
+           {/* Form with onChange handlers */}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="label">
+            <span className="label-text font-medium">Your Name</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            className="input input-bordered w-full"
+            placeholder="Your full name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="label">
+            <span className="label-text font-medium">Your Email</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            className="input input-bordered w-full"
+            placeholder="email@example.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label className="label">
+            <span className="label-text font-medium">Message</span>
+          </label>
+          <textarea
+            name="message"
+            className="textarea textarea-bordered w-full"
+            rows="5"
+            placeholder="Write your message here..."
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <button type="submit" className="btn btn-primary w-full">Submit Message</button>
+      </form>
         </div>
       </section>
     </div>

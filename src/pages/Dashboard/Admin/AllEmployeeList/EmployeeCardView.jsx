@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import { FaUserShield, FaFireAlt, FaMoneyCheckAlt } from 'react-icons/fa';
 
-const EmployeeCardView = ({ employees, onMakeHR, onFire, onAdjustSalary }) => {
-  const [salaryInput, setSalaryInput] = useState({});
+const EmployeeCardView = ({ employees, onMakeHR, onFire, onAdjustSalary, salaryInput, setSalaryInput }) => {
+  
   if (!Array.isArray(employees)) {
     return <p>No employees found or invalid data</p>;
   }
@@ -70,7 +69,7 @@ const EmployeeCardView = ({ employees, onMakeHR, onFire, onAdjustSalary }) => {
               </button>
             )}
 
-            {!emp.isFired ? (
+            {!emp.fired ? (
               <button
                 className="btn btn-sm btn-error w-full"
                 onClick={() => onFire(emp._id)}
