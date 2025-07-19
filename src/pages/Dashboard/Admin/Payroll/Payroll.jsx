@@ -1,72 +1,47 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
-import useAuth from '../../../../hooks/useAuth';
+import PaymentModal from './Payment/PaymentModal';
 
 const Payroll = () => {
-  const { user } = useAuth();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPaymentId, setSelectedPaymentId] = useState(null);
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
-  const [filter, setFilter] = useState('all'); // all | pending | paid
+  const [filter, setFilter] = useState('all');
 
   // Fetch all payment requests
   const { data: payments = [], isLoading } = useQuery({
     queryKey: ['payments'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/payments'); // Update this endpoint to fetch all (pending + paid)
+      const res = await axiosSecure.get('/payments'); 
       return res.data;
     },
   });
 
-  // Handle payment mutation
-  const payMutation = useMutation({
-    mutationFn: async (paymentId) => {
-      await axiosSecure.patch(`/payments/${paymentId}/pay`, {
-        approvedBy: user?.email,
-      });
-      return paymentId;
-    },
-    onSuccess: (paymentId) => {
-      queryClient.invalidateQueries(['payments']);
-      Swal.fire({
-        icon: 'success',
-        title: 'Payment Successful',
-        text: 'Employee has been paid successfully!',
-        timer: 2000,
-        showConfirmButton: false,
-      });
-    },
-    onError: (error) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Payment Failed',
-        text: error.message || 'Something went wrong.',
-      });
-    },
-  });
-
   const handlePay = (paymentId) => {
+    setSelectedPaymentId(paymentId);
+    setShowModal(true);
+  };
+
+  const handleSuccess = () => {
+    setShowModal(false);
+    queryClient.invalidateQueries(['payments']);
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'Do you want to proceed with the payment?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#16A34A',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Pay!',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        payMutation.mutate(paymentId);
-      }
+      icon: 'success',
+      title: 'Payment Successful',
+      text: 'Employee has been paid successfully!',
+      timer: 2000,
+      showConfirmButton: false,
     });
   };
 
   const filteredPayments = payments.filter((payment) => {
     if (filter === 'pending') return !payment.paymentDate;
     if (filter === 'paid') return payment.paymentDate;
-    return true; // all
+    return true;
   });
 
   if (isLoading) {
@@ -135,9 +110,9 @@ const Payroll = () => {
                     <button
                       className="btn btn-sm btn-success"
                       onClick={() => handlePay(payment._id)}
-                      disabled={payMutation.isLoading || payment.paymentDate}
+                      disabled={payment.paymentDate}
                     >
-                      {payment.paymentDate ? 'Paid' : (payMutation.isLoading ? 'Processing...' : 'Pay')}
+                      {payment.paymentDate ? 'Paid' : 'Pay'}
                     </button>
                   </td>
                 </tr>
@@ -146,6 +121,15 @@ const Payroll = () => {
           </tbody>
         </table>
       </div>
+      {showModal && (
+        <PaymentModal
+          isOpen={showModal}
+          paymentId={selectedPaymentId}
+          onClose={() => setShowModal(false)}
+          onSuccess={handleSuccess}
+        />
+      )}
+
     </div>
   );
 };

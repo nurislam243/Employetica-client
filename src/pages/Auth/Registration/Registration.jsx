@@ -7,6 +7,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Registration = () => {
   const { user, createUser, updateUserProfile } = useAuth();
+  console.log(user);
   const {
     register,
     handleSubmit,
@@ -31,22 +32,22 @@ const Registration = () => {
       photo,
     } = data;
 
-    // if (!photo[0]) {
-    //   return Swal.fire("Error", "Please upload a photo", "error");
-    // }
+    if (!photo[0]) {
+      return Swal.fire("Error", "Please upload a photo", "error");
+    }
 
     setLoading(true);
 
     try {
-      // 1. Upload image to imgbb
-      // const formData = new FormData();
-      // formData.append("image", photo[0]);
-      // const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
-      // const imgRes = await axios.post(
-      //   `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
-      //   formData
-      // );
-      // const photoURL = imgRes.data.data.display_url;
+      // Upload image to imgbb
+      const formData = new FormData();
+      formData.append("image", photo[0]);
+      const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
+      const imgRes = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+        formData
+      );
+      const photoURL = imgRes.data.data.display_url;
 
       // 2. Create user in Firebase
       await createUser(email, password);
@@ -54,7 +55,7 @@ const Registration = () => {
       // 3. Update profile in Firebase
       const userProfile = {
         displayName: name,
-        // photoURL,
+        photoURL,
       };
       await updateUserProfile(userProfile);
 
@@ -62,7 +63,7 @@ const Registration = () => {
       const newUser = {
         name,
         email,
-        // photo: photoURL,
+        photo: photoURL,
         role,
         bank_account_no,
         salary,
@@ -192,7 +193,7 @@ const Registration = () => {
         )}
 
         {/* Photo */}
-        {/* <input
+        <input
           type="file"
           accept="image/*"
           {...register("photo", { required: "Please upload your photo" })}
@@ -200,7 +201,7 @@ const Registration = () => {
         />
         {errors.photo && (
           <p className="text-red-500 text-sm">{errors.photo.message}</p>
-        )} */}
+        )}
 
         {/* Submit Button */}
         <button

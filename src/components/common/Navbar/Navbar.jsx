@@ -33,7 +33,7 @@ const Navbar = ({isScrolled}) => {
         <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-primary">
           <img src="/logo.png" alt="logo" className="w-8 h-8" />
           <span>
-            Employe<span className="text-secondary">tica</span>
+            Employetica
           </span>
         </Link>
 
@@ -76,6 +76,7 @@ const Navbar = ({isScrolled}) => {
                   src={user.photoURL}
                   className="w-10 h-10 rounded-full cursor-pointer"
                   alt="User Avatar"
+                  referrerPolicy='no-referrer'
                 />
               </label>
               <ul
