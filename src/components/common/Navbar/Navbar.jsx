@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router";
 import { FaBars, FaTimes } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import useUserRole from "../../../hooks/useUserRole";
+import Logo from "../../shared/Logo/Logo";
+import UserAvatarDropdown from "../../shared/UserAvatarDropdown/UserAvatarDropdown";
 
 const Navbar = ({isScrolled}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,12 +41,7 @@ const Navbar = ({isScrolled}) => {
     >
       <div className="max-w-[1536px] mx-auto px-4 flex items-center justify-between">
         {/* Logo (Left) */}
-        <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-primary">
-          <img src="/logo.png" alt="logo" className="w-8 h-8" />
-          <span>
-            Employetica
-          </span>
-        </Link>
+        <Logo></Logo>
 
         {/* Nav Links (Center) */}
         <div className="hidden md:flex flex-1 justify-center">
@@ -78,28 +75,7 @@ const Navbar = ({isScrolled}) => {
                 Register
               </Link>
             </>
-          ) : (
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0}>
-                <img
-                  src={user.photoURL}
-                  className="w-10 h-10 rounded-full cursor-pointer"
-                  alt="User Avatar"
-                  referrerPolicy='no-referrer'
-                />
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
-              >
-                <li>
-                  <button onClick={handleLogout} className="text-red-600 font-semibold">
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </div>
-          )}
+          ) : <UserAvatarDropdown></UserAvatarDropdown>}
         </div>
 
         {/* Mobile Menu Toggle */}

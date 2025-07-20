@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import Logo from "../../shared/Logo/Logo";
 
 const Footer = () => (
   <footer className="bg-neutral text-neutral-content py-12">
@@ -6,7 +7,9 @@ const Footer = () => (
       
       {/* Company Info */}
       <div>
-        <h4 className="text-2xl font-bold mb-4 text-primary">Employetica</h4>
+        <div className="">
+          <Logo></Logo>
+        </div>
         <p className="text-sm">
           © {new Date().getFullYear()} Employetica.  
           All rights reserved.
