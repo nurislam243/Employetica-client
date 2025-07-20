@@ -16,7 +16,6 @@ const PaymentModal = ({ isOpen, onClose, paymentId, onSuccess }) => {
                 <PaymentForm
                     paymentId={paymentId}
                     onSuccess={onSuccess}
-                    onClose={onClose}
                 />
                 </Elements>
 

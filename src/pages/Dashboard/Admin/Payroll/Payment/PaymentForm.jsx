@@ -3,7 +3,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 
-const PaymentForm = ({paymentId}) => {
+const PaymentForm = ({ paymentId, onSuccess }) => {
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
@@ -23,37 +23,64 @@ const PaymentForm = ({paymentId}) => {
     return '...loading';
   }
 
-  const amount = paymentInfo.price;
+  const amount = paymentInfo.amount;
   const amountInCents = amount*100;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!stripe || !elements) return;
+  if (!stripe || !elements) return;
 
-    const card = elements.getElement(CardElement);
-    if (!card) return;
+  const card = elements.getElement(CardElement);
+  if (!card) return;
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card,
-    });
+  const { error, paymentMethod } = await stripe.createPaymentMethod({
+    type: 'card',
+    card,
+  });
 
-    if (error) {
-      setError(error.message);
-      setSuccess('');
-    } else {
-      setError('');
-      setSuccess('Payment method created successfully!');
-      console.log("💳 PaymentMethod:", paymentMethod);
-    }
+  if (error) {
+    setError(error.message);
+    setSuccess('');
+    return;
+  } else {
+    setError('');
+    setSuccess('');
+  }
 
-    const res = await axiosSecure.post("/create-payment-intent", {
-      amount: amountInCents,
-      
-    });
-    console.log('res from intent', res)
-  };
+  // Create Payment Intent
+  const intentRes = await axiosSecure.post("/create-payment-intent", {
+    amount: amountInCents,
+  });
+
+  const clientSecret = intentRes.data.clientSecret;
+
+  // Confirm Card Payment
+  const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+    payment_method: paymentMethod.id
+  });
+
+  if (confirmError) {
+    setError(confirmError.message);
+    return;
+  }
+
+  // Update backend with payment info (PATCH)
+  const patchRes = await axiosSecure.patch(`/payments/${paymentId}`, {
+    transactionId: paymentIntent.id,
+    paymentDate: new Date(),
+    status: 'paid',
+    approvedBy: 'Stripe Gateway'
+  });
+
+  if (patchRes.data?.success) {
+    setSuccess(' Payment successful and saved!');
+    onSuccess();   
+  } else {
+    setError(' Payment succeeded, but failed to save in database');
+  }
+};
+
 
   return (
     <div>

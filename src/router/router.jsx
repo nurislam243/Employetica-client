@@ -21,6 +21,7 @@ import AllEmployeeList from "../pages/Dashboard/Admin/AllEmployeeList/AllEmploye
 import Payroll from "../pages/Dashboard/Admin/Payroll/Payroll";
 import PrivateRoute from "../routes/PrivateRoute";
 import ContactMessagesAdmin from "../pages/Dashboard/Admin/ContactMessagesAdmin/ContactMessagesAdmin";
+import Forbidden from "../pages/Error/Forbidden/Forbidden";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
       { path: "contact-us", element: <ContactUs /> },
       { path: "register", element: <Registration /> },
       { path: "login", element: <Login /> },
+      { path: "forbidden", element: <Forbidden /> }
     ]
   },
   {
