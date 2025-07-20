@@ -22,6 +22,7 @@ import Payroll from "../pages/Dashboard/Admin/Payroll/Payroll";
 import PrivateRoute from "../routes/PrivateRoute";
 import ContactMessagesAdmin from "../pages/Dashboard/Admin/ContactMessagesAdmin/ContactMessagesAdmin";
 import Forbidden from "../pages/Error/Forbidden/Forbidden";
+import DashboardHome from "../pages/Dashboard/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      { 
+        index: true, 
+        element: <DashboardHome /> 
+      },
+
       // Employee routes
       {
         path: "work-sheet",

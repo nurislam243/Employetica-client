@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { FaBars, FaTimes } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
+import useUserRole from "../../../hooks/useUserRole";
 
 const Navbar = ({isScrolled}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { role } = useUserRole();
 
   const { user, logOut } = useAuth();
 
@@ -15,9 +17,16 @@ const Navbar = ({isScrolled}) => {
     // TODO: Add your logout logic here
   };
 
+  const getDashboardPath = (role) => {
+    if (role === 'Employee') return '/dashboard/work-sheet';
+    if (role === 'HR') return '/dashboard/employee-list';
+    if (role === 'Admin') return '/dashboard/all-employee-list';
+    return '/dashboard';
+  };
+
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Dashboard", path: "/dashboard", private: true },
+    { name: "Dashboard", path: getDashboardPath(role), private: true },
     { name: "Contact Us", path: "/contact-us", private: false },
   ];
 
