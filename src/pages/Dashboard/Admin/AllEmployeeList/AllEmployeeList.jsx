@@ -56,8 +56,8 @@ const AllEmployeeList = () => {
 
   return (
     <div className="p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">All Verified Employees</h2>
+      <div className="flex flex-col gap-3 @min-[460px]:flex-row justify-between items-center mb-4">
+        <h2 className="text-lg @min-[320px]:text-2xl font-bold">All Verified Employees</h2>
         <button
           className="btn btn-outline btn-primary btn-sm"
           onClick={() => setView(view === 'table' ? 'card' : 'table')}

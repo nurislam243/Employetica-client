@@ -1,14 +1,10 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper and modules styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-// Import required modules
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import useUserRole from '../../../hooks/useUserRole';
+import { useEffect, useRef, useState } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const slides = [
   {
@@ -32,23 +28,89 @@ const slides = [
     image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1500&q=80",
     buttonText: "Explore Features",
   },
+  {
+    id: 4,
+    title: "Performance Analytics",
+    subtitle: "Analyze team performance and identify improvement areas easily.",
+    image: "https://images.unsplash.com/photo-1603791452906-b71c059d8b3e?auto=format&fit=crop&w=1500&q=80",
+    buttonText: "Analyze Now",
+  },
+  {
+    id: 5,
+    title: "Easy Leave Management",
+    subtitle: "Employees can request and track leave status seamlessly.",
+    image: "https://images.unsplash.com/photo-1603357461634-36b8cb80b3d5?auto=format&fit=crop&w=1500&q=80",
+    buttonText: "Request Leave",
+  },
 ];
 
 const Banner = () => {
-  const {role} = useUserRole();
-  console.log(role);
+  const { role } = useUserRole();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [countdown, setCountdown] = useState(8);
+  const swiperRef = useRef(null);
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    startCountdown();
+    return () => clearInterval(intervalRef.current);
+  }, [activeIndex]);
+
+  const startCountdown = () => {
+    setCountdown(8);
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          swiperRef.current?.slideNext();
+          return 8;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
   return (
-    <div className="h-[83vh] w-full">
+    <div className="h-[83vh] w-full relative group">
+      {/* Custom Navigation Buttons & Slide Number */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
+        <button
+          className="custom-swiper-button-prev bg-white/60 hover:bg-white text-primary cursor-pointer p-3 rounded-full shadow-lg transition"
+        >
+          <FaChevronLeft size={20} />
+        </button>
+        <span className="text-white font-semibold text-lg">
+          {activeIndex + 1}/{slides.length}
+        </span>
+        <button
+          className="custom-swiper-button-next bg-white/60 hover:bg-white cursor-pointer text-primary p-3 rounded-full shadow-lg transition"
+        >
+          <FaChevronRight size={20} />
+        </button>
+      </div>
+
+      {/* Countdown Timer (Bottom Right) */}
+      <div className="absolute bottom-8 right-6 z-20 border-2 text-primary font-extrabold px-3 py-1 rounded-full text-3xl ">
+        {countdown}
+      </div>
+
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
-        pagination={{ clickable: true }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
+        speed={800} 
+        navigation={{
+          prevEl: '.custom-swiper-button-prev',
+          nextEl: '.custom-swiper-button-next',
+        }}
+        modules={[Navigation]}
         className="mySwiper"
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.realIndex);
+        }}
       >
-        {slides.map(slide => (
+        {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div
               className="relative h-[83vh] w-full bg-cover bg-center flex items-center justify-center"
@@ -56,7 +118,7 @@ const Banner = () => {
                 backgroundImage: `url(${slide.image})`,
               }}
             >
-              <div className="absolute inset-0 bg-black/65 bg-opacity-60"></div>
+              <div className="absolute inset-0 bg-black/60"></div>
               <div className="relative z-10 text-center text-white px-4 max-w-3xl">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl mb-6">{slide.subtitle}</p>

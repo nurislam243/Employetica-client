@@ -3,8 +3,15 @@ import { NavLink, Outlet } from "react-router";
 import useUserRole from '../../hooks/useUserRole';
 import Logo from '../../components/shared/Logo/Logo';
 import UserAvatarDropdown from '../../components/shared/UserAvatarDropdown/UserAvatarDropdown';
-import { FaClipboardList, FaMoneyBillAlt, FaUsers, FaChartLine, FaUserCog, FaMoneyCheckAlt, FaEnvelopeOpenText } from 'react-icons/fa';
-import AdminOverview from '../../pages/Dashboard/Admin/AdminOverview/AdminOverview';
+import { FaClipboardList, FaMoneyBillAlt, FaUsers, FaChartLine, FaUserCog, FaMoneyCheckAlt, FaEnvelopeOpenText, FaChartPie } from 'react-icons/fa';
+import Clock from '../../components/dashboard/Clock';
+
+const getDashboardTitle = (role) => {
+  if (role === 'Admin') return "Admin Dashboard";
+  if (role === 'HR') return "HR Dashboard";
+  if (role === 'Employee') return "Employee Dashboard";
+  return "Dashboard";
+};
 
 const DashboardLayouts = () => {
   const { role } = useUserRole();
@@ -33,8 +40,12 @@ const DashboardLayouts = () => {
             </label>
           </div>
           <div className="w-full flex justify-between items-center px-1.5 @min-[320px]:px-2 xl:px-[14px] 2xl:px-4  @min-[1600px]:px-5">
-            Dashboard
-            <div className="">
+            <h1 className="text-lg md:text-xl hidden @min-[308px]:flex font-semibold">{getDashboardTitle(role)}</h1>
+            <h1 className="@min-[350px]:text-lg md:text-xl @min-[308px]:hidden font-semibold">Dashboard</h1>
+            <div className="flex items-center gap-3">
+              <div className="hidden @min-[500px]:flex">
+                <Clock></Clock>
+              </div>
               <UserAvatarDropdown />
             </div>
           </div>
@@ -54,6 +65,7 @@ const DashboardLayouts = () => {
             <Logo />
           </div>
 
+
           {/* Role-based navigation */}
           {role === "Employee" && (
             <>
@@ -66,7 +78,7 @@ const DashboardLayouts = () => {
                       : "text-base sm:text-lg px-3 py-1"
                   }
                 >
-                  <FaClipboardList /> Overview
+                   <FaChartPie /> Overview
                 </NavLink>
               </li>
               <li>
@@ -107,7 +119,7 @@ const DashboardLayouts = () => {
                       : "text-base sm:text-lg px-3 py-1"
                   }
                 >
-                  <FaUsers /> Overview
+                   <FaChartPie /> Overview
                 </NavLink>
               </li>
               <li>
@@ -148,7 +160,7 @@ const DashboardLayouts = () => {
                       : "text-base sm:text-lg px-3 py-1"
                   }
                 >
-                  <FaUserCog /> Overview
+                   <FaChartPie /> Overview
                 </NavLink>
               </li>
               <li>
