@@ -1,20 +1,20 @@
 import React from 'react';
 import { NavLink, Outlet } from "react-router";
-import useAuth from '../../hooks/useAuth';
 import useUserRole from '../../hooks/useUserRole';
 import Logo from '../../components/shared/Logo/Logo';
 import UserAvatarDropdown from '../../components/shared/UserAvatarDropdown/UserAvatarDropdown';
-
+import { FaClipboardList, FaMoneyBillAlt, FaUsers, FaChartLine, FaUserCog, FaMoneyCheckAlt, FaEnvelopeOpenText } from 'react-icons/fa';
+import AdminOverview from '../../pages/Dashboard/Admin/AdminOverview/AdminOverview';
 
 const DashboardLayouts = () => {
-  const {role} = useUserRole();
+  const { role } = useUserRole();
 
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open @container">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="navbar bg-base-300 w-full lg:w-[calc(100vw-320px)] fixed z-50">
+        <div className="navbar bg-base-300 w-full lg:w-[calc(100vw-280px)] fixed z-50">
           <div className="flex-none">
             <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost lg:hidden">
               <svg
@@ -32,8 +32,8 @@ const DashboardLayouts = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 w-full flex justify-between items-center">
-            Dashboard 
+          <div className="w-full flex justify-between items-center px-1.5 @min-[320px]:px-2 xl:px-[14px] 2xl:px-4  @min-[1600px]:px-5">
+            Dashboard
             <div className="">
               <UserAvatarDropdown />
             </div>
@@ -41,7 +41,7 @@ const DashboardLayouts = () => {
         </div>
 
         {/* Page content */}
-        <div className="pt-[64px]">
+        <div className="pt-[64px] px-1.5 @min-[320px]:px-2 xl:px-[14px] 2xl:px-4 @min-[1600px]:px-5">
           <Outlet />
         </div>
       </div>
@@ -49,33 +49,147 @@ const DashboardLayouts = () => {
       {/* Sidebar */}
       <div className="drawer-side bg-base-200 pt-[64px] lg:pt-0">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          <div className="">
-            <Logo></Logo>
+        <ul className="menu bg-base-200 text-base-content space-y-1.5 min-h-full w-[280px] p-5">
+          <div className="mb-[20px] mt-[10px] ml-[8px]">
+            <Logo />
           </div>
 
           {/* Role-based navigation */}
           {role === "Employee" && (
             <>
-              <li><NavLink to={'work-sheet'}>WorkSheet</NavLink></li>
-              <li><NavLink to={'payment-history'}>Payment History</NavLink></li>
+              <li>
+                <NavLink 
+                  to={'employee-overview'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaClipboardList /> Overview
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'work-sheet'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaClipboardList /> WorkSheet
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'payment-history'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaMoneyBillAlt /> Payment History
+                </NavLink>
+              </li>
             </>
           )}
 
           {role === "HR" && (
             <>
-              <li><NavLink to={'employee-list'}>Employee List</NavLink></li>
-              <li><NavLink to={'progress'}>Progress</NavLink></li>
+              <li>
+                <NavLink 
+                  to={'hr-overview'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaUsers /> Overview
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'employee-list'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaUsers /> Employee List
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'progress'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaChartLine /> Progress
+                </NavLink>
+              </li>
             </>
           )}
 
           {role === "Admin" && (
             <>
-              <li><NavLink to={'all-employee-list'}>All Employee List</NavLink></li>
-              <li><NavLink to={'payroll'}>Payroll</NavLink></li>
-              <li><NavLink to={'contact-messages'}>Contact Messages</NavLink></li>
+              <li>
+                <NavLink 
+                  to={'admin-overview'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaUserCog /> Overview
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'all-employee-list'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaUserCog /> All Employee List
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'payroll'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaMoneyCheckAlt /> Payroll
+                </NavLink>
+              </li>
+              <li>
+                <NavLink 
+                  to={'contact-messages'} 
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                      : "text-base sm:text-lg px-3 py-1"
+                  }
+                >
+                  <FaEnvelopeOpenText /> Contact Messages
+                </NavLink>
+              </li>
             </>
           )}
+
         </ul>
       </div>
     </div>

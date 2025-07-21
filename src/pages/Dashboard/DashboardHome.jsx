@@ -9,11 +9,11 @@ const DashboardHome = () => {
   useEffect(() => {
     if (!roleLoading && role) {
       if (role === 'Employee') {
-        navigate('dashboard/work-sheet');
+        navigate('dashboard/employee-overview');
       } else if (role === 'HR') {
-        navigate('dashboard/employee-list');
+        navigate('dashboard/hr-overview');
       } else if (role === 'Admin') {
-        navigate('dashboard/all-employee-list');
+        navigate('dashboard/admin-overview');
       } else {
         navigate('/forbidden');
       }

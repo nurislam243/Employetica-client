@@ -1,2 +1,46 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+
+  /* Main Colors */
+  --color-primary: #A2157F;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #4A79D0;
+  --color-secondary-content: #ffffff;
+
+  /* Backgrounds (Balanced Contrast with Primary/Secondary) */
+  --color-base-100: #FDFBFF;  /* Soft warm-white */
+  --color-base-200: #F3F0F8;  /* Light lavender tint */
+  --color-base-300: #E0DAEB;  /* Muted lavender-gray */
+
+  /* Text Colors */
+  --color-base-content: #1A1A1A;  /* Deep gray for sharp contrast */
+}
+
+
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+
+  /* Main Colors */
+  --color-primary: #A2157F;
+  --color-primary-content: #ffffff;
+
+  --color-secondary: #4A79D0;
+  --color-secondary-content: #ffffff;
+
+  /* Backgrounds */
+  --color-base-100: #121212;   /* true dark for page bg */
+  --color-base-200: #1D1B20;   /* section/card bg */
+  --color-base-300: #2A262F;   /* deeper section bg */
+
+  /* Text Colors */
+  --color-base-content: #EAEAEA;  /* light gray for readable text */
+}
+

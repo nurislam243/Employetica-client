@@ -23,6 +23,9 @@ import PrivateRoute from "../routes/PrivateRoute";
 import ContactMessagesAdmin from "../pages/Dashboard/Admin/ContactMessagesAdmin/ContactMessagesAdmin";
 import Forbidden from "../pages/Error/Forbidden/Forbidden";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
+import AdminOverview from "../pages/Dashboard/Admin/AdminOverview/AdminOverview";
+import EmployeeOverview from "../pages/Dashboard/Employee/EmployeeOverview/EmployeeOverview";
+import HrOverview from "../pages/Dashboard/HR/HROverview/HrOverview";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +54,14 @@ export const router = createBrowserRouter([
 
       // Employee routes
       {
+        path: "employee-overview",
+        element: (
+          <PrivateRoute allowedRoles={["Employee"]}>
+            <EmployeeOverview />
+          </PrivateRoute>
+        )
+      },
+      {
         path: "work-sheet",
         element: (
           <PrivateRoute allowedRoles={["Employee"]}>
@@ -68,6 +79,14 @@ export const router = createBrowserRouter([
       },
 
       // HR routes
+      {
+        path: "hr-overview",
+        element: (
+          <PrivateRoute allowedRoles={["HR"]}>
+            <HrOverview />
+          </PrivateRoute>
+        )
+      },
       {
         path: "employee-list",
         element: (
@@ -94,6 +113,14 @@ export const router = createBrowserRouter([
       },
 
       // Admin routes
+      {
+        path: "admin-overview",
+        element: (
+          <PrivateRoute allowedRoles={["Admin"]}>
+            <AdminOverview />
+          </PrivateRoute>
+        )
+      },
       {
         path: "all-employee-list",
         element: (

@@ -19,13 +19,27 @@ const PaymentHistory = () => {
           limit: perPage,
         },
       });
-      return response.data;
+      return response.data; // should return { payments: [], totalCount: number }
     },
     enabled: !!user?.email,
     keepPreviousData: true,
   });
 
   const payments = data?.payments || [];
+  const totalCount = data?.totalCount || 0;
+  const totalPages = Math.ceil(totalCount / perPage);
+
+  // Generate page numbers (maximum 3 visible)
+  let pageNumbers = [];
+  if (totalPages <= 3) {
+    pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+  } else if (currentPage === 1) {
+    pageNumbers = [1, 2, 3];
+  } else if (currentPage === totalPages) {
+    pageNumbers = [totalPages - 2, totalPages - 1, totalPages];
+  } else {
+    pageNumbers = [currentPage - 1, currentPage, currentPage + 1];
+  }
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading payment history</p>;
@@ -59,8 +73,9 @@ const PaymentHistory = () => {
           </tbody>
         </table>
 
-        {payments.length === perPage && (
-          <div className="mt-4 flex justify-end gap-2">
+        {/* Pagination UI */}
+        {totalPages > 1 && (
+          <div className="mt-4 flex justify-center gap-2">
             <button
               className="btn btn-sm"
               disabled={currentPage === 1}
@@ -68,8 +83,22 @@ const PaymentHistory = () => {
             >
               Previous
             </button>
+
+            {pageNumbers.map((number) => (
+              <button
+                key={number}
+                onClick={() => setCurrentPage(number)}
+                className={`btn btn-sm ${
+                  currentPage === number ? "btn-primary" : "btn-outline"
+                }`}
+              >
+                {number}
+              </button>
+            ))}
+
             <button
               className="btn btn-sm"
+              disabled={currentPage === totalPages}
               onClick={() => setCurrentPage((p) => p + 1)}
             >
               Next
