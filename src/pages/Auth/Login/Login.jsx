@@ -44,18 +44,18 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+    <div className="flex justify-center bg-base-100 items-center min-h-[calc(100vh-62px)] px-4">
+      <div className="bg-base-200/70 hover:bg-base-300/50 shadow-md shadow-primary/30 rounded p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold mb-6 text-center text-primary">Login to Your Account</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Email Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <label className="block text-sm font-medium text-base-content mb-1">Email</label>
             <input
               type="email"
               {...register("email", { required: "Email is required" })}
-              className={`w-full border px-4 py-2 rounded-lg focus:outline-none ${
+              className={`w-full border px-4 py-2 rounded bg-base-100 focus:outline-none ${
                 errors.email ? "border-red-500" : "border-gray-300 focus:border-primary"
               }`}
             />
@@ -66,13 +66,13 @@ const Login = () => {
 
           {/* Password Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <label className="block text-sm font-medium text-base-content mb-1">Password</label>
             <input
               type="password"
               {...register("password", {
                 required: isSubmitted && !errors.email ? "Password is required" : false,
               })}
-              className={`w-full border px-4 py-2 rounded-lg focus:outline-none ${
+              className={`w-full border px-4 py-2 rounded bg-base-100 focus:outline-none ${
                 errors.password ? "border-red-500" : "border-gray-300 focus:border-primary"
               }`}
             />
@@ -83,7 +83,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-primary text-white font-semibold py-2 rounded-lg hover:bg-primary/90 transition"
+            className="w-full bg-primary text-white cursor-pointer font-semibold py-2 rounded hover:bg-primary/90 transition"
           >
             Login
           </button>

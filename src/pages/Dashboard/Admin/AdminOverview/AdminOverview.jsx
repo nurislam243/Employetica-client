@@ -35,38 +35,43 @@ const AdminOverview = () => {
   } = data || {};
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="py-6 space-y-8">
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         <StatCard
           title="Total Users"
           value={totalUsers}
-          icon={<FaUsers className="text-blue-600 text-3xl" />}
+          icon={<FaUsers />}
+          color="#2563eb"
         />
         <StatCard
           title="Total Employees"
           value={totalEmployees}
-          icon={<FaUserTie className="text-green-600 text-3xl" />}
+          icon={<FaUserTie />}
+          color="#16a34a"
         />
         <StatCard
           title="Total HRs"
           value={totalHRs}
-          icon={<FaUserShield className="text-purple-600 text-3xl" />}
+          icon={<FaUserShield />}
+          color="#9333ea"
         />
         <StatCard
           title="Total Payments"
           value={totalPayments}
-          icon={<FaMoneyBillWave className="text-yellow-600 text-3xl" />}
+          icon={<FaMoneyBillWave />}
+          color="#ca8a04"
         />
         <StatCard
           title="Salary Budget"
           value={`$${totalSalaryBudget.toLocaleString()}`}
-          icon={<FaDollarSign className="text-red-600 text-3xl" />}
+          icon={<FaDollarSign />}
+          color="#dc2626"
         />
       </div>
 
       {/* Dynamic Content Section */}
-      <div className="bg-base-200 p-6 rounded-xl shadow">
+      <div className="bg-base-200 p-6 rounded shadow">
         <h2 className="text-2xl font-semibold mb-4 text-primary">📊 Admin Dashboard Summary</h2>
         <ul className="list-disc list-inside space-y-2 text-base-content text-base sm:text-lg">
           <li>

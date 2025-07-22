@@ -95,123 +95,125 @@ const Registration = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-md rounded-xl p-6 mt-10">
-      <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Name */}
-        <input
-          {...register("name", { required: "Name is required" })}
-          className="input input-bordered rounded-lg w-full"
-          placeholder="Full Name"
-        />
-        {errors.name && (
-          <p className="text-red-500 text-sm">{errors.name.message}</p>
-        )}
+    <div className="flex justify-center bg-base-100 items-center min-h-[calc(100vh-62px)] pb-5">
+      <div className="max-w-md w-full mx-auto bg-base-200/70 hover:bg-base-300/50 shadow-md shadow-primary/30 p-6 mt-10">
+        <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Name */}
+          <input
+            {...register("name", { required: "Name is required" })}
+            className="input input-bordered rounded w-full"
+            placeholder="Full Name"
+          />
+          {errors.name && (
+            <p className="text-red-500 text-sm">{errors.name.message}</p>
+          )}
 
-        {/* Email */}
-        <input
-          type="email"
-          {...register("email", { required: "Email is required" })}
-          className="input input-bordered rounded-lg w-full"
-          placeholder="Email"
-        />
-        {errors.email && (
-          <p className="text-red-500 text-sm">{errors.email.message}</p>
-        )}
+          {/* Email */}
+          <input
+            type="email"
+            {...register("email", { required: "Email is required" })}
+            className="input input-bordered rounded w-full"
+            placeholder="Email"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
 
-        {/* Password */}
-        <input
-          type="password"
-          {...register("password", {
-            required: "Password is required",
-            validate: {
-              minLength: (v) =>
-                v.length >= 6 || "Password must be at least 6 characters",
-              hasUpper: (v) =>
-                /[A-Z]/.test(v) ||
-                "Password must include at least one capital letter",
-              hasSpecial: (v) =>
-                /[!@#$%^&*]/.test(v) ||
-                "Password must include at least one special character",
-            },
-          })}
-          className="input rounded-lg input-bordered w-full"
-          placeholder="Password"
-        />
-        {errors.password && (
-          <p className="text-red-500 text-sm">{errors.password.message}</p>
-        )}
+          {/* Password */}
+          <input
+            type="password"
+            {...register("password", {
+              required: "Password is required",
+              validate: {
+                minLength: (v) =>
+                  v.length >= 6 || "Password must be at least 6 characters",
+                hasUpper: (v) =>
+                  /[A-Z]/.test(v) ||
+                  "Password must include at least one capital letter",
+                hasSpecial: (v) =>
+                  /[!@#$%^&*]/.test(v) ||
+                  "Password must include at least one special character",
+              },
+            })}
+            className="input rounded input-bordered w-full"
+            placeholder="Password"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          )}
 
-        {/* Role */}
-        <select
-          {...register("role", { required: "Please select a role" })}
-          className="select select-bordered rounded-lg w-full"
-        >
-          <option value="">Select Role</option>
-          <option value="Employee">Employee</option>
-          <option value="HR">HR</option>
-        </select>
-        {errors.role && (
-          <p className="text-red-500 text-sm">{errors.role.message}</p>
-        )}
+          {/* Role */}
+          <select
+            {...register("role", { required: "Please select a role" })}
+            className="select select-bordered rounded w-full"
+          >
+            <option value="">Select Role</option>
+            <option value="Employee">Employee</option>
+            <option value="HR">HR</option>
+          </select>
+          {errors.role && (
+            <p className="text-red-500 text-sm">{errors.role.message}</p>
+          )}
 
-        {/* Designation */}
-        <input
-          {...register("designation", {
-            required: "Designation is required",
-          })}
-          className="input rounded-lg input-bordered w-full"
-          placeholder="Designation (e.g., Digital Marketer)"
-        />
-        {errors.designation && (
-          <p className="text-red-500 text-sm">{errors.designation.message}</p>
-        )}
+          {/* Designation */}
+          <input
+            {...register("designation", {
+              required: "Designation is required",
+            })}
+            className="input rounded input-bordered w-full"
+            placeholder="Designation (e.g., Digital Marketer)"
+          />
+          {errors.designation && (
+            <p className="text-red-500 text-sm">{errors.designation.message}</p>
+          )}
 
-        {/* Bank Account Number */}
-        <input
-          {...register("bank_account_no", {
-            required: "Bank account number is required",
-          })}
-          className="input rounded-lg input-bordered w-full"
-          placeholder="Bank Account Number"
-        />
-        {errors.bank_account_no && (
-          <p className="text-red-500 text-sm">
-            {errors.bank_account_no.message}
-          </p>
-        )}
+          {/* Bank Account Number */}
+          <input
+            {...register("bank_account_no", {
+              required: "Bank account number is required",
+            })}
+            className="input rounded input-bordered w-full"
+            placeholder="Bank Account Number"
+          />
+          {errors.bank_account_no && (
+            <p className="text-red-500 text-sm">
+              {errors.bank_account_no.message}
+            </p>
+          )}
 
-        {/* Salary */}
-        <input
-          type="number"
-          {...register("salary", { required: "Salary is required" })}
-          className="input input-bordered rounded-lg w-full"
-          placeholder="Salary"
-        />
-        {errors.salary && (
-          <p className="text-red-500 text-sm">{errors.salary.message}</p>
-        )}
+          {/* Salary */}
+          <input
+            type="number"
+            {...register("salary", { required: "Salary is required" })}
+            className="input input-bordered rounded w-full"
+            placeholder="Salary"
+          />
+          {errors.salary && (
+            <p className="text-red-500 text-sm">{errors.salary.message}</p>
+          )}
 
-        {/* Photo */}
-        <input
-          type="file"
-          accept="image/*"
-          {...register("photo", { required: "Please upload your photo" })}
-          className="file-input rounded-lg file-input-bordered w-full"
-        />
-        {errors.photo && (
-          <p className="text-red-500 text-sm">{errors.photo.message}</p>
-        )}
+          {/* Photo */}
+          <input
+            type="file"
+            accept="image/*"
+            {...register("photo", { required: "Please upload your photo" })}
+            className="file-input rounded file-input-bordered w-full"
+          />
+          {errors.photo && (
+            <p className="text-red-500 text-sm">{errors.photo.message}</p>
+          )}
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="btn btn-primary rounded-lg w-full"
-        >
-          {loading ? "Registering..." : "Register"}
-        </button>
-      </form>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn btn-primary rounded w-full"
+          >
+            {loading ? "Registering..." : "Register"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

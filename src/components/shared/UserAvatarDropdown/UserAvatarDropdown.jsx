@@ -18,16 +18,16 @@ const UserAvatarDropdown = () => {
 
   return (
     <div className="dropdown dropdown-end">
-      <label tabIndex={0}>
+      <label tabIndex={0} >
         {user?.photoURL ? (
           <img
             src={user.photoURL}
             alt="User Avatar"
-            className="w-10 h-10 rounded-full cursor-pointer"
+            className="w-10 h-10 rounded-full border-1 border-primary cursor-pointer"
             referrerPolicy="no-referrer"
           />
         ) : (
-          <FaUserCircle className="text-4xl cursor-pointer" />
+          <FaUserCircle className="text-[40px] rounded-full border-1 border-primary cursor-pointer" />
         )}
       </label>
       <ul

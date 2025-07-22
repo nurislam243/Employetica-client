@@ -47,7 +47,7 @@ const GoogleLogin = () => {
   return (
     <button
       onClick={handleGoogleLogin}
-      className="bg-white border w-full justify-center  border-gray-300 hover:bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg shadow inline-flex items-center cursor-pointer gap-2"
+      className="hover:bg-primary hover:text-white border w-full justify-center  border-gray-300 bg-base-100 text-base-content font-medium py-2 px-4 rounded shadow inline-flex items-center cursor-pointer gap-2"
     >
       <img
         src="https://img.icons8.com/color/48/google-logo.png"

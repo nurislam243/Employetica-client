@@ -49,25 +49,25 @@ const Payroll = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="py-4">
       <h2 className="text-2xl font-semibold mb-4 text-center">Payroll Management</h2>
 
       {/* Filter Buttons */}
       <div className="flex justify-center gap-4 mb-6">
         <button
-          className={`px-4 py-1 rounded ${filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200'}`}
+          className={`px-4 py-1 rounded ${filter === 'all' ? 'bg-primary text-white' : 'bg-base-300'}`}
           onClick={() => setFilter('all')}
         >
           All
         </button>
         <button
-          className={`px-4 py-1 rounded ${filter === 'pending' ? 'bg-yellow-500 text-white' : 'bg-gray-200'}`}
+          className={`px-4 py-1 rounded ${filter === 'pending' ? 'bg-yellow-500 text-white' : 'bg-base-300'}`}
           onClick={() => setFilter('pending')}
         >
           Pending
         </button>
         <button
-          className={`px-4 py-1 rounded ${filter === 'paid' ? 'bg-green-600 text-white' : 'bg-gray-200'}`}
+          className={`px-4 py-1 rounded ${filter === 'paid' ? 'bg-green-600 text-white' : 'bg-base-300'}`}
           onClick={() => setFilter('paid')}
         >
           Paid
@@ -77,7 +77,7 @@ const Payroll = () => {
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="table-auto w-full border-collapse border border-gray-300">
-          <thead className="bg-gray-100">
+          <thead className="bg-base-300/60">
             <tr>
               <th className="border px-4 py-2">Employee Name</th>
               <th className="border px-4 py-2">Month</th>
@@ -90,13 +90,13 @@ const Payroll = () => {
           <tbody>
             {filteredPayments.length === 0 ? (
               <tr>
-                <td colSpan={6} className="text-center py-4 text-gray-500">
+                <td colSpan={6} className="text-center py-4 text-base-content">
                   No payments found.
                 </td>
               </tr>
             ) : (
               filteredPayments.map((payment) => (
-                <tr key={payment._id} className="hover:bg-gray-50">
+                <tr key={payment._id} className="hover:bg-base-200/80 text-center">
                   <td className="border px-4 py-2">{payment.employeeName}</td>
                   <td className="border px-4 py-2 capitalize">{payment.month}</td>
                   <td className="border px-4 py-2">{payment.year}</td>

@@ -90,7 +90,7 @@ const Banner = () => {
       </div>
 
       {/* Countdown Timer (Bottom Right) */}
-      <div className="absolute bottom-8 right-6 z-20 border-2 text-primary font-extrabold px-3 py-1 rounded-full text-xl @min-[400px]:text-2xl @min-[550px]:text-3xl ">
+      <div className="absolute flex items-center bottom-9 right-2 @min-[400px]:bottom-8 @min-[400px]:right-6 z-20 border-2 text-primary font-extrabold px-[7px] @min-[320px]:px-[8px] py-[1px] @min-[360px]:px-3 @min-[360px]:py-1 rounded-full text-base @min-[340px]:text-xl @min-[400px]:text-2xl @min-[550px]:text-3xl ">
         {countdown}
       </div>
 

@@ -35,11 +35,11 @@ const Navbar = ({isScrolled}) => {
 
   return (
     <header
-      className={`fixed bg-base-300 w-full z-50 shadow transition-all duration-300 ${
+      className={`fixed bg-base-300 w-full z-50 shadow transition-all duration-300 px-3 @min-[280px]:px-[14px] @min-[350px]:px-4 @min-[400px]:px-5 @min-[500px]:px-8 @min-[1580px]:px-0 ${
         isScrolled ? "py-3" : "py-4 "
       }`}
     >
-      <div className="max-w-[1536px] mx-auto px-4 flex items-center justify-between">
+      <div className="max-w-[1536px] mx-auto flex items-center justify-between">
         {/* Logo (Left) */}
         <Logo></Logo>
 
@@ -67,19 +67,19 @@ const Navbar = ({isScrolled}) => {
         {/* Auth Buttons or User Photo (Right) */}
         <div className="hidden md:flex items-center gap-4">
           {!user ? (
-            <>
+            <div className="my-1 space-x-2">
               <Link to="/login" className="btn btn-sm btn-outline btn-primary">
                 Login
               </Link>
               <Link to="/register" className="btn btn-sm btn-primary">
                 Register
               </Link>
-            </>
+            </div>
           ) : <UserAvatarDropdown></UserAvatarDropdown>}
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-2xl text-primary"

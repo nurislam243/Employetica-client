@@ -94,12 +94,12 @@ const EmployeeList = () => {
   });
 
   return (
-    <div className="p-4">
+    <div className="py-4">
       <h2 className="text-2xl font-semibold mb-4">Employee List</h2>
 
       <div className="overflow-x-auto">
         <table className="table w-full border">
-          <thead className="bg-gray-200">
+          <thead className="bg-base-200">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (

@@ -21,9 +21,9 @@ const DashboardLayouts = () => {
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="navbar bg-base-300 w-full lg:w-[calc(100vw-280px)] fixed z-50">
+        <div className="navbar bg-base-300 w-full lg:w-[calc(100vw-280px)] fixed z-50 px-3 @min-[340px]:px-4 @min-[500px]:px-5 @min-[620px]:px-[26px] @min-[1024px]:px-[14px] @min-[1280px]:px-[18px] @min-[1536px]:px-5 @min-[1600px]:px-7">
           <div className="flex-none">
-            <label htmlFor="my-drawer-2" className="btn btn-square btn-ghost lg:hidden">
+            <label htmlFor="my-drawer-2" className="mr-2 lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -39,7 +39,7 @@ const DashboardLayouts = () => {
               </svg>
             </label>
           </div>
-          <div className="w-full flex justify-between items-center px-1.5 @min-[320px]:px-2 xl:px-[14px] 2xl:px-4  @min-[1600px]:px-5">
+          <div className="w-full flex justify-between items-center">
             <h1 className="text-lg md:text-xl hidden @min-[308px]:flex font-semibold">{getDashboardTitle(role)}</h1>
             <h1 className="@min-[350px]:text-lg md:text-xl @min-[308px]:hidden font-semibold">Dashboard</h1>
             <div className="flex items-center gap-3">
@@ -52,7 +52,7 @@ const DashboardLayouts = () => {
         </div>
 
         {/* Page content */}
-        <div className="pt-[64px] px-1.5 @min-[320px]:px-2 xl:px-[14px] 2xl:px-4 @min-[1600px]:px-5">
+        <div className="pt-[64px] px-3 @min-[340px]:px-4 @min-[500px]:px-5 @min-[620px]:px-[26px] @min-[1024px]:px-[14px] @min-[1280px]:px-[18px] @min-[1536px]:px-5 @min-[1600px]:px-7">
           <Outlet />
         </div>
       </div>

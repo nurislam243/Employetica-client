@@ -9,10 +9,12 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <Services></Services>
-            <CompanyAchievements></CompanyAchievements>
-            <AboutUs></AboutUs>
-            <TestimonialSection></TestimonialSection>
+            <div className="px-3 @min-[280px]:px-[14px] @min-[350px]:px-4 @min-[400px]:px-5 @min-[500px]:px-8 @min-[1580px]:px-0">
+                <Services></Services>
+                <CompanyAchievements></CompanyAchievements>
+                <AboutUs></AboutUs>
+                <TestimonialSection></TestimonialSection>
+            </div>
         </div>
     );
 };

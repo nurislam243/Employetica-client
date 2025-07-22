@@ -35,48 +35,55 @@ const EmployeeOverview = () => {
   } = data || {};
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="py-6 space-y-8">
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <StatCard
           title="Name"
           value={name}
-          icon={<FaUser className="text-blue-600 text-3xl" />}
+          icon={<FaUser />}
+          color="#2563eb"
         />
         <StatCard
           title="Role"
           value={role}
-          icon={<FaUserShield className="text-purple-600 text-3xl" />}
+          icon={<FaUserShield />}
+          color="#9333ea"
         />
         <StatCard
           title="Total Tasks"
           value={totalTasks}
-          icon={<FaTasks className="text-green-600 text-3xl" />}
+          icon={<FaTasks />}
+          color="#16a34a"
         />
         <StatCard
           title="Salary"
           value={`$${salary}`}
-          icon={<FaMoneyCheckAlt className="text-yellow-600 text-3xl" />}
+          icon={<FaMoneyCheckAlt />}
+          color="#ca8a04"
         />
         <StatCard
           title="Payments Received"
           value={paidPayments}
-          icon={<FaUserCheck className="text-emerald-600 text-3xl" />}
+          icon={<FaUserCheck />}
+          color="#10b981"
         />
         <StatCard
           title="Last Payment"
           value={lastPaymentDate ? new Date(lastPaymentDate).toLocaleDateString() : 'N/A'}
-          icon={<FaCalendarCheck className="text-cyan-600 text-3xl" />}
+          icon={<FaCalendarCheck />}
+          color="#06b6d4"
         />
         <StatCard
           title="Verified Status"
           value={isVerified ? 'Verified' : 'Not Verified'}
-          icon={<FaUserShield className={`text-3xl ${isVerified ? 'text-green-500' : 'text-red-500'}`} />}
+          icon={<FaUserShield />}
+          color={isVerified ? "#22c55e" : "#ef4444"}
         />
       </div>
 
       {/* Extra Info */}
-      <div className="bg-base-200 p-6 rounded-xl shadow">
+      <div className="bg-base-200 p-6 rounded shadow">
         <h2 className="text-xl font-semibold text-primary mb-3">📌 Employee Dashboard Summary</h2>
         <p className="text-base sm:text-lg leading-relaxed text-base-content">
           Welcome <span className="font-semibold">{name}</span>! This is your personal overview panel.

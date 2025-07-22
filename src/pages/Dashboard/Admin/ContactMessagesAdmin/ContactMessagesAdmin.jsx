@@ -18,7 +18,7 @@ const ContactMessagesAdmin = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="py-4">
       <h2 className="text-2xl font-bold mb-4">Contact Messages</h2>
       <div className="overflow-x-auto w-full">
         <table className="table-auto min-w-[600px] w-full border-collapse border border-gray-300">

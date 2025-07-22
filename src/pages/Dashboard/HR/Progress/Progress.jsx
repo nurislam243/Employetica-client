@@ -32,7 +32,7 @@ const Progress = () => {
   console.log(workData);
 
   return (
-    <div className="p-6">
+    <div className="py-6">
       <h2 className="text-2xl font-bold mb-4">Employee Progress</h2>
 
       <div className="flex gap-4 flex-wrap mb-4">

@@ -28,37 +28,40 @@ const HrOverview = () => {
     totalEmployees,
     verifiedEmployees,
     pendingPayments,
-    message
   } = data || {};
 
   return (
-    <div className="p-6 space-y-8">
+    <div className="py-6 space-y-8">
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <StatCard
           title="Total Employees"
           value={totalEmployees}
-          icon={<FaUserTie className="text-blue-600 text-3xl" />}
+          icon={<FaUserTie />}
+          color="#2563eb"
         />
         <StatCard
           title="Verified Employees"
           value={verifiedEmployees}
-          icon={<FaUserCheck className="text-green-600 text-3xl" />}
+          icon={<FaUserCheck />}
+          color="#16a34a"
         />
         <StatCard
           title="Pending Payments"
           value={pendingPayments}
-          icon={<FaMoneyBillWave className="text-yellow-600 text-3xl" />}
+          icon={<FaMoneyBillWave />}
+          color="#ca8a04"
         />
         <StatCard
           title="Leaves Today"
           value={0}
-          icon={<FaClock className="text-purple-600 text-3xl" />}
+          icon={<FaClock />}
+          color="#9333ea"
         />
       </div>
 
       {/* Extra Info */}
-      <div className="bg-base-200 p-6 rounded-xl shadow">
+      <div className="bg-base-200 p-6 rounded shadow">
         <h2 className="text-xl font-semibold text-primary mb-3">📋 HR Dashboard Summary</h2>
         <p className="text-base sm:text-lg leading-relaxed text-base-content">
           This is your HR overview panel. You are currently managing <strong>{totalEmployees}</strong> employees,

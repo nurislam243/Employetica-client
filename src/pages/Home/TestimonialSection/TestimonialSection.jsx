@@ -49,7 +49,7 @@ const Testimonial = () => {
   const nextRef = useRef(null);
 
   return (
-    <section className="py-12 px-4 text-center relative max-w-[1536px] mx-auto w-full">
+    <section className="py-12 text-center relative max-w-[1536px] mx-auto w-full">
       <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
         Trusted by Employees, HRs & Admins
       </h2>

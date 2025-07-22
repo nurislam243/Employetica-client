@@ -2,8 +2,8 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaGithub } from "reac
 import Logo from "../../shared/Logo/Logo";
 
 const Footer = () => (
-  <footer className="bg-neutral py-12">
-    <div className="max-w-[1536px] mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:py-[10px] gap-8">
+  <footer className="bg-neutral py-12 px-3 @min-[280px]:px-[14px] @min-[350px]:px-4 @min-[400px]:px-5 @min-[500px]:px-8 @min-[1580px]:px-0">
+    <div className="max-w-[1536px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:py-[10px] gap-8">
       
       {/* Company Info */}
       <div className="space-y-3">
@@ -38,7 +38,7 @@ const Footer = () => (
 
       {/* Newsletter & Contact */}
       <div>
-        <h5 className="font-semibold mb-3">font-bold text-lg text-neutral-content/90 mb-3</h5>
+        <h5 className="font-bold text-lg text-neutral-content/90 mb-3">Stay Connected</h5>
         <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
           <input
             type="email"
@@ -49,16 +49,16 @@ const Footer = () => (
           <button type="submit" className="btn btn-sm btn-primary">Subscribe</button>
         </form>
         <div className="flex mt-4 gap-4 text-xl">
-          <a href="#" className="hover:text-[#0077B5] transition-colors duration-300">
+          <a href="https://www.linkedin.com/in/md-nur-islam1/" className="hover:text-[#0077B5] transition-colors duration-300" target="blank">
             <FaLinkedinIn />
           </a>
-          <a href="#" className="hover:text-[#171515] transition-colors duration-300">
+          <a href="https://github.com/nurislam243" className="hover:text-[#171515] transition-colors duration-300" target="blank">
             <FaGithub />
           </a>
-          <a href="#" className="hover:text-[#1877F2] transition-colors duration-300">
+          <a href="https://www.facebook.com/nur.islam.568309/" className="hover:text-[#1877F2] transition-colors duration-300" target="blank">
             <FaFacebookF />
           </a>
-          <a href="#" className="hover:text-[#1DA1F2] transition-colors duration-300">
+          <a href="https://x.com/MdNurIslam55434" className="hover:text-[#1DA1F2] transition-colors duration-300" target="blank">
             <FaTwitter />
           </a>
         </div>

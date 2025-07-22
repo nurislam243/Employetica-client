@@ -4,7 +4,7 @@ const EmployeeTableView = ({ employees, onMakeHR, onFire, onAdjustSalary, salary
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra w-full">
-        <thead className="bg-base-200 text-sm font-bold text-gray-700">
+        <thead className="bg-base-200 text-sm font-bold text-base-content/90">
           <tr>
             <th>#</th>
             <th>Photo</th>

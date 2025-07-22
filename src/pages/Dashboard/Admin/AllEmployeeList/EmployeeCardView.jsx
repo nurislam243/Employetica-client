@@ -11,7 +11,7 @@ const EmployeeCardView = ({ employees, onMakeHR, onFire, onAdjustSalary, salaryI
       {employees.map((emp) => (
         <div
           key={emp._id}
-          className="card bg-base-100 shadow-md border border-gray-300 p-4 rounded"
+          className="card bg-base-100 shadow-md border border-base-content/40 hover:shadow-primary hover:bg-base-200 p-4 rounded"
         >
           <div className="flex items-center gap-4">
             <img
@@ -77,7 +77,7 @@ const EmployeeCardView = ({ employees, onMakeHR, onFire, onAdjustSalary, salaryI
                 <FaFireAlt /> Fire
               </button>
             ) : (
-              <p className="text-red-600 font-semibold text-center">Fired</p>
+              <p className="text-error font-semibold text-center">Fired</p>
             )}
           </div>
         </div>

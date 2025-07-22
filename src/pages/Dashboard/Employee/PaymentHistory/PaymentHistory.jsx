@@ -45,7 +45,7 @@ const PaymentHistory = () => {
   if (error) return <p>Error loading payment history</p>;
 
   return (
-    <div className="p-4">
+    <div className="py-4">
       <h2 className="text-2xl font-semibold mb-4">Payment History</h2>
       <div className="overflow-x-auto">
         <table className="table w-full border">

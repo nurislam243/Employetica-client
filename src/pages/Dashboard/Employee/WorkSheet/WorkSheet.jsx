@@ -73,7 +73,7 @@ const WorkSheet = () => {
   };
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="py-4 space-y-4">
       <h2 className="text-2xl font-bold">Work Sheet</h2>
 
       {/* Form Section */}
