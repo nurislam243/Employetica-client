@@ -1,52 +1,43 @@
-const AboutUsWithBackground = () => {
+const AboutUs = () => {
   return (
-    <section
-      className="relative bg-cover bg-center max-w-[1536px] mx-auto bg-no-repeat"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80')",
-      }}
-      aria-labelledby="aboutus-heading"
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/75 bg-opacity-60"></div>
-
-      {/* Content */}
-      <div className="relative mx-auto px-6 py-20 text-white flex flex-col lg:flex-row items-center gap-12 min-h-[400px]">
-        {/* Left (optional image or empty for focus on text) */}
-        <div className="lg:w-1/2 w-full">
-          {/* If you want an image here, else remove this div */}
+    <section className="py-16 px-4 md:px-10 rounded max-w-[1536px] mx-auto shadow-md">
+      <div className="grid md:grid-cols-2 gap-10 2xl:gap-14 items-start">
+        
+        {/* Left Side */}
+        <div className="flex flex-col gap-4">
+          <div>
+            <h2 className="text-4xl font-bold text-primary mb-3">About Employetica</h2>
+            <p className="text-base-content text-lg leading-relaxed">
+              <strong>Employetica</strong> is our in-house employee management platform built to enhance internal operations.
+              Employees can manage their tasks, HR handles recruitment and payroll, and Admins oversee the entire workflow —
+              all from a unified, secure system.
+            </p>
+          </div>
+          <div className="divider divider-start text-primary">Team Collaboration</div>
+          <img
+            src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&w=600&q=80"
+            alt="Employee Working"
+            className="w-full h-52 object-cover rounded-lg shadow-md"
+          />
         </div>
 
-        {/* Right (text content) */}
-        <div className="lg:w-1/2 w-full max-w-lg">
-          <h2
-            id="aboutus-heading"
-            className="text-5xl font-extrabold mb-6 leading-tight"
-          >
-            About Us
-          </h2>
-          <p className="text-lg mb-6 leading-relaxed">
-            At <span className="font-semibold">Employetica</span>, we believe
-            our people are our greatest asset. Founded on principles of
-            transparency, integrity, and innovation, we aim to create a
-            supportive environment where employees thrive, collaborate, and grow.
+        {/* Right Side */}
+        <div className="flex flex-col-reverse md:flex-col gap-4">
+          <img
+            src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&w=600&q=80"
+            alt="Team Meeting"
+            className="w-full h-52 object-cover rounded-lg shadow-md"
+          />
+          <div className="divider divider-start text-primary">Empowering Management</div>
+          <p className="text-base-content leading-relaxed">
+            With Employetica, our company gains transparency and control in every aspect of workforce management —
+            from real-time analytics, task delegation, leave tracking to salary processing. It’s a comprehensive solution
+            to modernize and optimize your organization’s internal ecosystem.
           </p>
-          <p className="text-base mb-6 leading-relaxed text-gray-300">
-            Our management system ensures smooth communication between employees,
-            HR, and admins, helping us monitor workloads efficiently while
-            fostering career development and job satisfaction.
-          </p>
-          <ul className="list-disc list-inside space-y-3 text-gray-300">
-            <li>Committed to employee growth and transparent communication</li>
-            <li>Leveraging technology to improve productivity and accountability</li>
-            <li>Providing a secure and role-based access system for all users</li>
-            <li>Supporting a culture of continuous feedback and improvement</li>
-          </ul>
         </div>
       </div>
     </section>
   );
 };
 
-export default AboutUsWithBackground;
+export default AboutUs;

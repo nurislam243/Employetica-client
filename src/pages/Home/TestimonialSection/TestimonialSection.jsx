@@ -49,20 +49,20 @@ const Testimonial = () => {
   const nextRef = useRef(null);
 
   return (
-    <section className="py-12 px-4 text-center relative max-w-[1536px] mx-auto w-full bg-gray-50">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-cyan-800">
+    <section className="py-12 px-4 text-center relative max-w-[1536px] mx-auto w-full">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
         Trusted by Employees, HRs & Admins
       </h2>
-      <p className="text-gray-500 mb-10">Real stories from real users</p>
+      <p className="text-base-content/90 mb-10">Real stories from real users</p>
 
       {/* Arrow buttons */}
       <div className="flex justify-end mr-5">
         <div className="space-x-4">
           <button ref={prevRef} className="bg-white shadow hover:bg-gray-100 p-3 rounded-full">
-            <FaArrowLeft className="text-xl text-cyan-700" />
+            <FaArrowLeft className="text-xl text-primary" />
           </button>
           <button ref={nextRef} className="bg-white shadow hover:bg-gray-100 p-3 rounded-full">
-            <FaArrowRight className="text-xl text-cyan-700" />
+            <FaArrowRight className="text-xl text-primary" />
           </button>
         </div>
       </div>
@@ -74,7 +74,7 @@ const Testimonial = () => {
         centeredSlides={true}
         loop={true}
         spaceBetween={30}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        autoplay={{ delay: 3000, disableOnInteraction: false,  pauseOnMouseEnter: true }}
         pagination={{ el: '.custom-pagination', clickable: true }}
         navigation={{
           prevEl: prevRef.current,
@@ -89,24 +89,24 @@ const Testimonial = () => {
           768: { slidesPerView: 1 },
           1024: { slidesPerView: 3 },
         }}
-        className="w-full mx-auto px-4"
+        className="w-full mx-auto"
       >
         {testimonials.map((item, index) => (
           <SwiperSlide key={index}>
             {({ isActive }) => (
               <div
-                className={`p-6 rounded-lg mt-9 shadow-md transition-transform duration-300 ease-in-out flex flex-col items-center text-center
-                ${isActive ? 'bg-white' : 'bg-white opacity-60'}`}
+                className={`p-6 rounded mt-9 shadow border border-base-content/10 transition-transform duration-300 ease-in-out flex flex-col items-center text-center
+                ${isActive ? 'bg-base-300/80 hover:bg-base-300' : 'bg-base-200 opacity-60'}`}
               >
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-16 h-16 rounded-full mb-4 border-2 border-cyan-600 object-cover"
+                  className="w-16 h-16 rounded-full mb-4 border-2 border-primary object-cover"
                 />
-                <div className="text-4xl text-cyan-600 mb-2">“</div>
-                <p className="text-gray-700 mb-4 italic">{item.text}</p>
-                <h4 className="font-semibold text-cyan-900">{item.name}</h4>
-                <p className="text-sm text-gray-500">{item.position}</p>
+                <div className="text-4xl text-primary mb-2">“</div>
+                <p className="text-base-content mb-4 italic">{item.text}</p>
+                <h4 className="font-semibold text-primary">{item.name}</h4>
+                <p className="text-sm text-base-content/80">{item.position}</p>
               </div>
             )}
           </SwiperSlide>

@@ -35,8 +35,8 @@ const Navbar = ({isScrolled}) => {
 
   return (
     <header
-      className={`bg-base-100 fixed w-full z-50 shadow-md transition-all duration-300 ${
-        isScrolled ? "py-2" : "py-4"
+      className={`fixed bg-base-300 w-full z-50 shadow transition-all duration-300 ${
+        isScrolled ? "py-3" : "py-4 "
       }`}
     >
       <div className="max-w-[1536px] mx-auto px-4 flex items-center justify-between">
@@ -52,8 +52,8 @@ const Navbar = ({isScrolled}) => {
                   key={path}
                   to={path}
                   className={({ isActive }) =>
-                    `text-base font-medium ${
-                      isActive ? "text-secondary underline" : "hover:text-primary"
+                    `font-medium text-lg ${
+                      isActive ? "text-primary" : "hover:text-secondary"
                     }`
                   }
                 >
@@ -102,7 +102,7 @@ const Navbar = ({isScrolled}) => {
                   onClick={() => setIsMenuOpen(false)}
                   className={({ isActive }) =>
                     `text-lg font-medium ${
-                      isActive ? "text-secondary underline" : "hover:text-primary"
+                      isActive ? "text-primary" : "hover:text-secondary"
                     }`
                   }
                 >

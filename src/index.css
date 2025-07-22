@@ -13,6 +13,9 @@
   --color-secondary: #4A79D0;
   --color-secondary-content: #ffffff;
 
+  --color-neutral: #D1C8D9;     
+  --color-neutral-content: #2B2B2B; 
+
   /* Backgrounds (Balanced Contrast with Primary/Secondary) */
   --color-base-100: #FDFBFF;  /* Soft warm-white */
   --color-base-200: #F3F0F8;  /* Light lavender tint */
@@ -34,6 +37,9 @@
 
   --color-secondary: #4A79D0;
   --color-secondary-content: #ffffff;
+
+  --color-neutral: #2E2B33;    
+  --color-neutral-content: #E0E0E0;  
 
   /* Backgrounds */
   --color-base-100: #121212;   /* true dark for page bg */

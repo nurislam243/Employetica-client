@@ -110,7 +110,7 @@ const Services = () => {
         {services.map((service) => (
           <div
             key={service.id}
-            className="relative bg-white rounded-xl shadow-md overflow-hidden border group"
+            className="relative bg-base-200/70 hover:bg-base-300/80 rounded shadow-md overflow-hidden border border-base-content/20 group"
           >
             {/* Image Section with overlay */}
             <div className="relative h-48 overflow-hidden">
@@ -119,13 +119,13 @@ const Services = () => {
                 alt={service.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-3 left-3 bg-white rounded-full p-2 shadow">
+              <div className="absolute top-3 left-3 bg-white/80 border-3 border-primary rounded-full p-2 shadow">
                 <div className="text-2xl text-primary">{service.icon}</div>
               </div>
 
               {/* Overlay for details */}
               <div
-                className={`absolute top-0 left-0 w-full h-full text-white p-4 flex flex-col justify-center bg-black/70 transition-all duration-500 ease-in-out transform ${
+                className={`absolute top-0 left-0 w-full h-full text-white p-4 flex flex-col justify-center bg-black/85 transition-all duration-500 ease-in-out transform ${
                   expanded === service.id
                     ? "translate-y-0 opacity-100"
                     : "translate-y-full opacity-0"
@@ -139,10 +139,10 @@ const Services = () => {
             {/* Bottom content with toggle button */}
             <div className="p-4">
               <h3 className="text-lg font-semibold">{service.title}</h3>
-              <p className="text-sm text-gray-600">{service.short}</p>
+              <p className="text-sm text-base-content/80">{service.short}</p>
               <button
                 onClick={() => toggleExpand(service.id)}
-                className="mt-2 text-sm text-blue-600 hover:underline"
+                className="mt-2 font-medium text-primary hover:text-secondary cursor-pointer"
               >
                 {expanded === service.id ? "Close" : "Learn More"}
               </button>

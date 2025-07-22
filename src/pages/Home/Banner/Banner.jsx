@@ -90,7 +90,7 @@ const Banner = () => {
       </div>
 
       {/* Countdown Timer (Bottom Right) */}
-      <div className="absolute bottom-8 right-6 z-20 border-2 text-primary font-extrabold px-3 py-1 rounded-full text-3xl ">
+      <div className="absolute bottom-8 right-6 z-20 border-2 text-primary font-extrabold px-3 py-1 rounded-full text-xl @min-[400px]:text-2xl @min-[550px]:text-3xl ">
         {countdown}
       </div>
 
@@ -122,7 +122,7 @@ const Banner = () => {
               <div className="relative z-10 text-center text-white px-4 max-w-3xl">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl mb-6">{slide.subtitle}</p>
-                <button className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg transition duration-300">
+                <button className="bg-primary hover:bg-primary/50 cursor-pointer text-white px-5 py-[9px] rounded-lg font-medium shadow-lg transition duration-300">
                   {slide.buttonText}
                 </button>
               </div>

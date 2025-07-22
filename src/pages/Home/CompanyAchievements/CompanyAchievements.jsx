@@ -26,7 +26,7 @@ const achievementsData = [
 
 const CompanyAchievements = () => {
   return (
-    <section className="max-w-[1536px] mx-auto px-4 py-16 bg-base-100">
+    <section className="max-w-[1536px] mx-auto py-16">
       <h2 className="text-3xl font-bold text-center mb-10 text-primary">
         Company Achievements
       </h2>
@@ -35,11 +35,11 @@ const CompanyAchievements = () => {
         {achievementsData.map(({ icon, title, description }, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+            className="bg-base-200/70 hover:bg-base-300 rounded shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
           >
             <div className="mb-4">{icon}</div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-gray-600 text-sm">{description}</p>
+            <p className="text-base-content/90 text-sm">{description}</p>
           </div>
         ))}
       </div>
