@@ -2,17 +2,43 @@
 import { useNavigate } from 'react-router';
 import { FaUserCircle } from 'react-icons/fa';
 import useAuth from '../../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const UserAvatarDropdown = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      await logOut();
-      navigate('/');
-    } catch (error) {
-      console.error('Logout error:', error);
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You will be logged out of your account.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, log me out',
+      cancelButtonText: 'Cancel'
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await logOut();
+        await Swal.fire(
+          'Logged out!',
+          'You have been successfully logged out.',
+          'success'
+        );
+        navigate('/');
+      } catch (error) {
+        console.error('Logout error:', error);
+        await Swal.fire(
+          'Error!',
+          'Something went wrong while logging out.',
+          'error'
+        );
+      }
+    } else {
+      console.log('Logout cancelled by user.');
     }
   };
 

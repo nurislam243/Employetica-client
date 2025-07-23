@@ -5,19 +5,16 @@ import useAuth from "../../../hooks/useAuth";
 import useUserRole from "../../../hooks/useUserRole";
 import Logo from "../../shared/Logo/Logo";
 import UserAvatarDropdown from "../../shared/UserAvatarDropdown/UserAvatarDropdown";
+import Swal from "sweetalert2";
 
 const Navbar = ({isScrolled}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { role } = useUserRole();
 
-  const { user, logOut } = useAuth();
+  const { user } = useAuth();
 
 
-  const handleLogout = () => {
-    logOut();
-    console.log("Logging out...");
-    // TODO: Add your logout logic here
-  };
+
 
   const getDashboardPath = (role) => {
     if (role === 'Employee') return '/dashboard/work-sheet';
