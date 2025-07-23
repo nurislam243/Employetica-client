@@ -19,7 +19,7 @@ const services = [
     details:
       "Employees can log their daily work, choose task types, input hours worked, and submit updates. Everything is date-specific and managed for HR review.",
     image:
-      "https://images.unsplash.com/photo-1584697964403-ec20b2372150?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/4n5Bdmgx/man-using-external-storage-used-2.jpg",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const services = [
     details:
       "HR can verify and pay employees, and each payment is saved with transaction details. Employees can view their monthly salary history anytime.",
     image:
-      "https://images.unsplash.com/photo-1588776814546-96f263b8a909?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/6JPWnScT/pexels-tima-miroshnichenko-6693655-1.jpg",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const services = [
     details:
       "HR can analyze submitted tasks and hours via bar charts to identify top performers and optimize workload distribution.",
     image:
-      "https://images.unsplash.com/photo-1522202195461-61e6b8e432d1?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/HDbxBJSV/analyzing-business-chart-1.jpg",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const services = [
     details:
       "Our system grants dashboard features based on user roles. Admins manage roles and control access. HR oversees employees. Employees focus on workflow updates.",
     image:
-      "https://images.unsplash.com/photo-1600267165383-54bd7035f61c?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/8gjjk0pT/colleagues-working-together-call-center-office-1.jpg",
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ const services = [
     details:
       "Detailed work hour analytics per employee are available to assess time distribution and productivity across departments or task categories.",
     image:
-      "https://images.unsplash.com/photo-1559757175-5700dde67548?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/Rkk31fdt/schedule-planner-task-agenda-checklist-concept-min.jpg",
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const services = [
     details:
       "HR and Admin can change user status and control employment access, including toggling verified status, assigning roles, and blocking fired users.",
     image:
-      "https://images.unsplash.com/photo-1531379410502-63bfe8cdaf6d?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/Gfkqrkkg/tv-game-show-with-two-participants-answering-questions-solving-puzzles-host-smiling-women-participat.jpg",
   },
   {
     id: 7,
@@ -79,7 +79,7 @@ const services = [
     details:
       "Admins can raise salaries of HRs or Employees as needed. The system prevents accidental or malicious salary reductions for security.",
     image:
-      "https://images.unsplash.com/photo-1508387022272-8b648bdc3ffb?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/Q3bsbgfP/handsome-businessman-white-shirt-holding-folder-with-cash-looking-aside-with-pensive-expression-sitt.jpg",
   },
   {
     id: 8,
@@ -89,7 +89,7 @@ const services = [
     details:
       "An easy-to-use contact form allows anyone to send inquiries or suggestions. Admin can view all submitted messages through the dashboard.",
     image:
-      "https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80",
+      "https://i.ibb.co/XZ47760T/pexels-tima-miroshnichenko-5439436-min.jpg",
   },
 ];
 

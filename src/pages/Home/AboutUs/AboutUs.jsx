@@ -15,18 +15,18 @@ const AboutUs = () => {
           </div>
           <div className="divider divider-start text-primary">Team Collaboration</div>
           <img
-            src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&w=600&q=80"
+            src="https://i.ibb.co/mF6rcRQ0/photo-1629904853716-f0bc54eea481.jpg"
             alt="Employee Working"
-            className="w-full h-52 object-cover rounded-lg shadow-md"
+            className="w-full h-52 object-cover rounded shadow-md"
           />
         </div>
 
         {/* Right Side */}
         <div className="flex flex-col-reverse md:flex-col gap-4">
           <img
-            src="https://images.unsplash.com/photo-1629904853716-f0bc54eea481?auto=format&fit=crop&w=600&q=80"
+            src="https://i.ibb.co/1JsWRsCr/pexels-fauxels-3184360-min.jpg"
             alt="Team Meeting"
-            className="w-full h-52 object-cover rounded-lg shadow-md"
+            className="w-full h-52 object-cover rounded shadow-md"
           />
           <div className="divider divider-start text-primary">Empowering Management</div>
           <p className="text-base-content leading-relaxed">

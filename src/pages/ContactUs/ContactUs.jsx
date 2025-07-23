@@ -35,7 +35,8 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="max-w-[1536px] px-4 py-16 mx-auto bg-base-100 w-full">
+    <div className="min-h-[calc(100vh-60px)]">
+      <div className="max-w-[1536px] px-4 pb-16 mx-auto bg-base-100 w-full">
       {/* Header Section */}
       <section className="py-16 px-4">
         <div className="max-w-[1536px] mx-auto text-center">
@@ -50,9 +51,9 @@ const ContactUs = () => {
       <section className=" grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Left Column - Info */}
         <div
-          className="relative rounded-lg overflow-hidden text-white p-10"
+          className="relative rounded overflow-hidden text-white p-10"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c')",
+            backgroundImage: "url('https://i.ibb.co/3YBVYYFh/photo-1522071820081-009f0129c71c-min.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             minHeight: "500px",
@@ -88,7 +89,7 @@ const ContactUs = () => {
         </div>
 
         {/* Right Column - Form */}
-        <div className="bg-base-200 hover:bg-base-300/90 rounded-lg shadow-lg p-10 space-y-6">
+        <div className="bg-base-200 hover:bg-base-300/90 rounded shadow-lg p-10 space-y-6">
           <h3 className="text-2xl font-bold text-center text-primary mb-2">Send Us a Message</h3>
            {/* Form with onChange handlers */}
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -138,6 +139,7 @@ const ContactUs = () => {
           </form>
         </div>
       </section>
+      </div>
     </div>
   );
 };

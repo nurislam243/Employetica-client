@@ -11,37 +11,37 @@ const slides = [
     id: 1,
     title: "Smart Employee Task Tracking",
     subtitle: "Easily log your daily work and improve team productivity.",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1500&q=80",
+    image: "https://i.ibb.co/TMKDYvnd/pexels-cottonbro-8453934-min.jpg",
     buttonText: "Get Started",
   },
   {
     id: 2,
     title: "Streamlined Payroll Management",
     subtitle: "HR and Admin can process salaries securely and efficiently.",
-    image: "https://images.unsplash.com/photo-1581092918361-990198bc72f1?auto=format&fit=crop&w=1500&q=80",
+    image: "https://i.ibb.co/chkZbdTb/front-view-beautiful-young-businesswoman-black-jacket-blue-shirt-working-with-calculator-front-table.jpg",
     buttonText: "See How It Works",
   },
   {
     id: 3,
     title: "Role-based Access Control",
     subtitle: "Secure your system with tailored access for Admin, HR & Employees.",
-    image: "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1500&q=80",
+    image: "https://i.ibb.co/9HLqLj2T/woman-touching-control-panel-wall-corridor-min.jpg",
     buttonText: "Explore Features",
   },
   {
     id: 4,
     title: "Performance Analytics",
     subtitle: "Analyze team performance and identify improvement areas easily.",
-    image: "https://images.unsplash.com/photo-1603791452906-b71c059d8b3e?auto=format&fit=crop&w=1500&q=80",
+    image: "https://i.ibb.co/Y7ZBhfK1/people-office-analyzing-checking-finance-graphs-min.jpg",
     buttonText: "Analyze Now",
   },
   {
     id: 5,
-    title: "Easy Leave Management",
-    subtitle: "Employees can request and track leave status seamlessly.",
-    image: "https://images.unsplash.com/photo-1603357461634-36b8cb80b3d5?auto=format&fit=crop&w=1500&q=80",
-    buttonText: "Request Leave",
-  },
+    title: "Controlled Employee Termination",
+    subtitle: "Admin can permanently remove HR or Employees — fired users can no longer log in.",
+    image: "https://i.ibb.co/B5zS5Mx6/front-view-beautiful-young-businesswoman-black-jacket-blue-shirt-working-with-laptop-front-table-bus.jpg",
+    buttonText: "See Control Panel",
+  }
 ];
 
 const Banner = () => {
