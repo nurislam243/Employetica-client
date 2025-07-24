@@ -5,6 +5,8 @@ import PaymentModal from "./PaymentModal";
 import { Link } from "react-router";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import NoDataFound from "../../../Error/NoDataFound/NoDataFound";
+import Swal from "sweetalert2";
 
 
 const EmployeeList = () => {
@@ -18,6 +20,7 @@ const EmployeeList = () => {
       return res.data;
       },
   });
+
   
 
   const handleToggleVerification = async (emp) => {
@@ -25,11 +28,23 @@ const EmployeeList = () => {
       await axiosSecure.patch(`/users/verify/${emp._id}`, {
         isVerified: !emp.isVerified,
       });
-      alert("Status updated");
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: `Employee ${emp.isVerified ? 'unverified' : 'verified'} successfully!`,
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
       refetch();
     } catch (err) {
       console.error(err);
-      alert("Update failed");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to update verification status.',
+      });
     }
   };
 
@@ -93,36 +108,48 @@ const EmployeeList = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  if (isLoading) {
+    return <p className="text-center mt-8  text-lg">Loading employees...</p>;
+  }
+
   return (
     <div className="py-4">
       <h2 className="text-2xl font-semibold mb-4">Employee List</h2>
 
-      <div className="overflow-x-auto">
-        <table className="table w-full border">
-          <thead className="bg-base-200">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="text-left p-2">
-                    {flexRender(header.column.columnDef.header, header.getContext())}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="border-b">
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="p-2">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        <div className="overflow-x-auto">
+          <table className="table w-full border">
+            <thead className="bg-base-200">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th key={header.id} className="text-left p-2">
+                      {flexRender(header.column.columnDef.header, header.getContext())}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.length === 0 ? (
+                <tr>
+                  <td colSpan={columns.length} className="text-center py-6">
+                    <NoDataFound message="No employees found." />
                   </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                </tr>
+              ) : (
+                table.getRowModel().rows.map((row) => (
+                  <tr key={row.id} className="border-b">
+                    {row.getVisibleCells().map((cell) => (
+                      <td key={cell.id} className="p-2">
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </td>
+                    ))}
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
 
       {/* Payment Modal */}
       {selectedEmployee && (

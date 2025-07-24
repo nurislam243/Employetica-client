@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import NoDataFound from "../../../Error/NoDataFound/NoDataFound";
 
 const Progress = () => {
   const [selectedName, setSelectedName] = useState("");
@@ -16,7 +17,7 @@ const Progress = () => {
   });
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="text-center mt-8">Fetching employee progress data, please wait...</p>;
   }
 
   const filtered = workData.filter((item) => {
@@ -72,14 +73,22 @@ const Progress = () => {
             </tr>
           </thead>
           <tbody>
-            {filtered.map((item) => (
-              <tr key={item._id}>
-                <td>{item.name}</td>
-                <td>{item.taskType}</td>
-                <td>{item.hoursWorked}</td>
-                <td>{item.date}</td>
+            {filtered.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="text-center py-6">
+                  <NoDataFound message="No progress data found for the selected filters." />
+                </td>
               </tr>
-            ))}
+            ) : (
+              filtered.map((item) => (
+                <tr key={item._id}>
+                  <td>{item.name}</td>
+                  <td>{item.taskType}</td>
+                  <td>{item.hoursWorked}</td>
+                  <td>{item.date}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

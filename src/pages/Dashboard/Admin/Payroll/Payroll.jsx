@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import PaymentModal from './Payment/PaymentModal';
+import NoDataFound from '../../../Error/NoDataFound/NoDataFound';
 
 const Payroll = () => {
   const [showModal, setShowModal] = useState(false);
@@ -45,7 +46,7 @@ const Payroll = () => {
   });
 
   if (isLoading) {
-    return <div className="text-center mt-10">Loading payments...</div>;
+    return <div className="text-center text-lg mt-10">Loading payments...</div>;
   }
 
   return (
@@ -91,7 +92,7 @@ const Payroll = () => {
             {filteredPayments.length === 0 ? (
               <tr>
                 <td colSpan={6} className="text-center py-4 text-base-content">
-                  No payments found.
+                  <NoDataFound></NoDataFound>
                 </td>
               </tr>
             ) : (

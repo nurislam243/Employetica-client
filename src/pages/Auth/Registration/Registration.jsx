@@ -4,10 +4,13 @@ import { useState } from "react";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useLocation, useNavigate } from "react-router";
 
 const Registration = () => {
-  const { user, createUser, updateUserProfile } = useAuth();
-  console.log(user);
+  const { createUser, updateUserProfile } = useAuth();
+  const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from || '/';
   const {
     register,
     handleSubmit,
@@ -76,6 +79,7 @@ const Registration = () => {
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire("Success", "Account created successfully!", "success");
+          navigate(from);
         }
       })
 

@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const PaymentModal = ({ employee, closeModal, refetch }) => {
   const axiosSecure = useAxiosSecure();
@@ -26,7 +27,12 @@ const PaymentModal = ({ employee, closeModal, refetch }) => {
       };
 
       await axiosSecure.post("/payments", paymentData);
-      alert(`Payment request sent for ${employee.name}. Awaiting admin approval.`);
+      Swal.fire({
+        icon: 'info',
+        title: 'Request Sent',
+        text: `Payment request sent for ${employee.name}. Awaiting admin approval.`,
+        confirmButtonColor: '#3085d6',
+      });
       reset();
       refetch();
       closeModal();

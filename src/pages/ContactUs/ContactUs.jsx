@@ -21,7 +21,6 @@ const ContactUs = () => {
 
     try {
       const res = await axiosSecure.post('/contact-us', formData);
-      console.log(res.data);
 
       if (res.data.success) {
         Swal.fire('Success', 'Your message has been sent!', 'success');

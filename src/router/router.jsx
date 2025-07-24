@@ -26,11 +26,13 @@ import DashboardHome from "../pages/Dashboard/DashboardHome";
 import AdminOverview from "../pages/Dashboard/Admin/AdminOverview/AdminOverview";
 import EmployeeOverview from "../pages/Dashboard/Employee/EmployeeOverview/EmployeeOverview";
 import HrOverview from "../pages/Dashboard/HR/HROverview/HrOverview";
+import ErrorPage from "../pages/Error/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts />,
+     errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home /> },
       { path: "contact-us", element: <ContactUs /> },

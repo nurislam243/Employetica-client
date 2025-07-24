@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useAuth from "../../../../hooks/useAuth";
+import NoDataFound from "../../../Error/NoDataFound/NoDataFound";
 
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
@@ -41,7 +42,7 @@ const PaymentHistory = () => {
     pageNumbers = [currentPage - 1, currentPage, currentPage + 1];
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-center text-lg mt-8">Loading Payment History, Please Wait...</p>;
   if (error) return <p>Error loading payment history</p>;
 
   return (
@@ -60,16 +61,26 @@ const PaymentHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {payments.map((p, idx) => (
-              <tr key={idx}>
-                <td>{p.month}</td>
-                <td>{p.year}</td>
-                <td>${p.amount}</td>
-                <td>{p.status}</td>
-                <td>{p.transactionId}</td>
-                <td>{new Date(p.paymentDate).toLocaleDateString()}</td>
+            {payments.length > 0 ? (
+              payments.map((p, idx) => (
+                <tr key={idx}>
+                  <td>{p.month}</td>
+                  <td>{p.year}</td>
+                  <td>${p.amount}</td>
+                  <td>{p.status}</td>
+                  <td>{p.transactionId}</td>
+                  <td>{new Date(p.paymentDate).toLocaleDateString()}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6">
+                  <div className="py-6">
+                    <NoDataFound message="No payment history available yet." />
+                  </div>
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
 

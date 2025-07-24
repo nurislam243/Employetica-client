@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import useUserRole from '../../hooks/useUserRole';
+import Spinner from '../../components/common/Spinner/Spinner';
 
 const DashboardHome = () => {
   const { role, roleLoading } = useUserRole();
@@ -21,7 +22,7 @@ const DashboardHome = () => {
   }, [role, roleLoading, navigate]);
 
   if (roleLoading) {
-    return <div>Loading dashboard...</div>;
+    return <Spinner></Spinner>;
   }
 
   return <div>Redirecting...</div>;

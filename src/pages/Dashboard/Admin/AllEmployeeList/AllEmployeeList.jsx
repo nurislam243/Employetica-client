@@ -4,6 +4,7 @@ import EmployeeTableView from './EmployeeTableView';
 import EmployeeCardView from './EmployeeCardView';
 import useVerifiedUsers from '../../../../hooks/useVerifiedUsers';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import NoDataFound from '../../../Error/NoDataFound/NoDataFound';
 
 const AllEmployeeList = () => {
   const [view, setView] = useState('table');
@@ -50,7 +51,7 @@ const AllEmployeeList = () => {
   if (isLoading)
     return (
       <div className="flex justify-center py-10">
-        <span className="loading loading-bars loading-lg text-primary"></span>
+        <p className='text-lg'>Loading All Employee ...</p>
       </div>
     );
 
@@ -66,7 +67,9 @@ const AllEmployeeList = () => {
         </button>
       </div>
 
-      {view === 'table' ? (
+      {employees.length === 0 ? (
+        <NoDataFound message="No verified employees found." />
+      ) : view === 'table' ? (
         <EmployeeTableView
           employees={employees}
           onMakeHR={handleMakeHR}
@@ -85,6 +88,7 @@ const AllEmployeeList = () => {
           onAdjustSalary={handleAdjustSalary}
         />
       )}
+
     </div>
   );
 };

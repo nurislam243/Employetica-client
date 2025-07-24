@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import NoDataFound from '../../../Error/NoDataFound/NoDataFound';
 
 const ContactMessagesAdmin = () => {
   const axiosSecure = useAxiosSecure();
@@ -11,10 +12,9 @@ const ContactMessagesAdmin = () => {
       return res.data;
     },
   });
-  console.log(messages);
 
   if (isLoading) {
-    return <div>Loading messages...</div>;
+    return <div className='text-lg text-center mt-8'>Loading messages...</div>;
   }
 
   return (
@@ -31,14 +31,24 @@ const ContactMessagesAdmin = () => {
             </tr>
           </thead>
           <tbody>
-            {messages.map(({ _id, name, email, message, createdAt }) => (
-              <tr key={_id}>
-                <td className="border border-gray-300 px-4 py-2">{name}</td>
-                <td className="border border-gray-300 px-4 py-2">{email}</td>
-                <td className="border border-gray-300 px-4 py-2">{message}</td>
-                <td className="border border-gray-300 px-4 py-2">{new Date(createdAt).toLocaleString()}</td>
+            {messages.length === 0 ? (
+              <tr>
+                <td colSpan={4} className="p-8">
+                  <NoDataFound message="No contact messages found." />
+                </td>
               </tr>
-            ))}
+            ) : (
+              messages.map(({ _id, name, email, message, createdAt }) => (
+                <tr key={_id}>
+                  <td className="border border-gray-300 px-4 py-2">{name}</td>
+                  <td className="border border-gray-300 px-4 py-2">{email}</td>
+                  <td className="border border-gray-300 px-4 py-2">{message}</td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {new Date(createdAt).toLocaleString()}
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

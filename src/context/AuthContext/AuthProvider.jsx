@@ -25,9 +25,7 @@ const AuthProvider = ({ children }) => {
     if (currentUser) {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/is-fired-user/${currentUser.email}`);
-
-        console.log("Fired user API response:", res.data); 
-        if (res.data?.fired) {
+         if (res.data?.fired) {
           await Swal.fire({
             icon: 'error',
             title: 'Access Denied',

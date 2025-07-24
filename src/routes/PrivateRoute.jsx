@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router";
 import useAuth from "../hooks/useAuth";
 import useUserRole from "../hooks/useUserRole";
+import Spinner from "../components/common/Spinner/Spinner";
 
 const PrivateRoute = ({ children, allowedRoles }) => {
   const { user, loading: authLoading } = useAuth();
@@ -8,14 +9,13 @@ const PrivateRoute = ({ children, allowedRoles }) => {
   const location = useLocation();
 
   if (authLoading || roleLoading) {
-    return <div className="text-center">Loading...</div>;
+    return <Spinner></Spinner>;
   }
 
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
- console.log(role);
   if (allowedRoles && role && !allowedRoles.includes(role)) {
     return <Navigate to="/forbidden" replace />;
   }

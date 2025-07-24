@@ -17,7 +17,7 @@ const EmployeeOverview = () => {
   });
 
   if (isLoading) {
-    return <div className="text-center mt-10 text-lg">Loading overview data...</div>;
+    return <div className="text-center mt-8 text-lg">Loading overview data...</div>;
   }
 
   if (isError) {

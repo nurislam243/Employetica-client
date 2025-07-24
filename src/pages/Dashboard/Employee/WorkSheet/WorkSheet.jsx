@@ -7,6 +7,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import useWorksheets from "../../../../hooks/useWorksheets";
 import WorkSheetTable from "./WorkSheetTable";
+import NoDataFound from "../../../Error/NoDataFound/NoDataFound";
 
 const WorkSheet = () => {
   const { user } = useAuth();
@@ -17,7 +18,7 @@ const WorkSheet = () => {
   const [hours, setHours] = useState("");
   const [date, setDate] = useState(new Date());
 
-  if (isLoading) return <span>Loading...</span>;
+  if (isLoading) return <p className="text-center text-lg mt-8">Loading Worksheet...</p>;
 
   const handleAdd = async () => {
     if (!task) {
@@ -127,7 +128,13 @@ const WorkSheet = () => {
       </div>
 
       {/* Worksheet Table */}
-      <WorkSheetTable worksheets={worksheets} refetch={refetch} />
+      {
+        worksheets.length > 0 ? (
+          <WorkSheetTable worksheets={worksheets} refetch={refetch} />
+        ) : (
+          <NoDataFound message="No tasks added yet." />
+        )
+      }
     </div>
   );
 };

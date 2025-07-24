@@ -59,3 +59,36 @@
 
 Client uses `.env` file to hide sensitive data:
 
+## 📡 API Endpoints
+
+### 🔐 Authentication
+- `POST /jwt` — Generate JWT token after Firebase login
+- `GET /logout` — Clear cookie and logout user
+
+### 👤 Users
+- `GET /users` — Get all users (admin only)
+- `POST /users` — Save a new user
+- `PATCH /users/role/:id` — Update user role (admin only)
+- `DELETE /users/:id` — Delete a user
+
+### 🛠️ Services
+- `GET /services` — Get all services
+- `GET /services/:id` — Get a single service
+- `POST /services` — Add a new service (provider only)
+- `DELETE /services/:id` — Delete service (provider or admin)
+
+### 📅 Bookings
+- `GET /bookings` — Get all bookings (admin/provider/user)
+- `POST /bookings` — Create a new booking
+- `PATCH /bookings/status/:id` — Update booking status (provider/admin)
+- `DELETE /bookings/:id` — Cancel a booking
+
+### ⭐ Reviews
+- `GET /reviews` — Get all reviews for a service
+- `POST /reviews` — Add a review (authenticated user)
+- `DELETE /reviews/:id` — Delete a review
+
+---
+
+## 📁 Project Folder Structure
+

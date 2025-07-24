@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import useUserRole from '../../../hooks/useUserRole';
 import { useEffect, useRef, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -45,7 +44,6 @@ const slides = [
 ];
 
 const Banner = () => {
-  const { role } = useUserRole();
   const [activeIndex, setActiveIndex] = useState(0);
   const [countdown, setCountdown] = useState(8);
   const swiperRef = useRef(null);
@@ -62,7 +60,9 @@ const Banner = () => {
     intervalRef.current = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
-          swiperRef.current?.slideNext();
+          setTimeout(() => {
+            swiperRef.current?.slideNext();
+          }, 0);
           return 8;
         }
         return prev - 1;
@@ -98,7 +98,7 @@ const Banner = () => {
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
-        speed={800} 
+        speed={800}
         navigation={{
           prevEl: '.custom-swiper-button-prev',
           nextEl: '.custom-swiper-button-next',
@@ -107,7 +107,9 @@ const Banner = () => {
         className="mySwiper"
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => {
-          setActiveIndex(swiper.realIndex);
+          setTimeout(() => {
+            setActiveIndex(swiper.realIndex);
+          }, 0);
         }}
       >
         {slides.map((slide) => (

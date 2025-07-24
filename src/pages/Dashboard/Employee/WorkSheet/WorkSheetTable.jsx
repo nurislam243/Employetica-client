@@ -70,6 +70,7 @@ const WorkSheetTable = ({ worksheets,  refetch }) => {
   };
 
 
+
   return (
     <>
       <div className="overflow-x-auto">
@@ -84,23 +85,25 @@ const WorkSheetTable = ({ worksheets,  refetch }) => {
             </tr>
           </thead>
           <tbody>
-            {worksheets.map((work) => (
-              <tr key={work._id}>
-                <td>{work.taskType}</td>
-                <td>{work.hoursWorked}</td>
-                <td>{work.date}</td>
-                <td>
-                  <button onClick={() => setEditingEntry(work)} className="cursor-pointer">
-                    <FaEdit className="text-blue-600" />
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(work._id, refetch)} className="cursor-pointer">
-                    <FaTrash className="text-red-500" />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            { 
+              worksheets.map((work) => (
+                <tr key={work._id}>
+                  <td>{work.taskType}</td>
+                  <td>{work.hoursWorked}</td>
+                  <td>{work.date}</td>
+                  <td>
+                    <button onClick={() => setEditingEntry(work)} className="cursor-pointer">
+                      <FaEdit className="text-blue-600" />
+                    </button>
+                  </td>
+                  <td>
+                    <button onClick={() => handleDelete(work._id, refetch)} className="cursor-pointer">
+                      <FaTrash className="text-red-500" />
+                    </button>
+                  </td>
+                </tr>
+              ))
+            }
           </tbody>
         </table>
       </div>

@@ -1,5 +1,6 @@
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaEnvelope, FaGithub } from "react-icons/fa";
 import Logo from "../../shared/Logo/Logo";
+import { Link } from "react-router";
 
 const Footer = () => (
   <footer className="bg-neutral py-12 px-3 @min-[280px]:px-[14px] @min-[350px]:px-4 @min-[400px]:px-5 @min-[500px]:px-8 @min-[1580px]:px-0">
@@ -20,9 +21,9 @@ const Footer = () => (
       <div>
         <h5 className="font-bold text-lg text-neutral-content/90 mb-3">Quick Links</h5>
         <ul className="space-y-2 text-sm">
-          <li><a href="/" className="hover:text-secondary cursor-pointer">Home</a></li>
-          <li><a href="/dashboard" className="hover:text-secondary cursor-pointer">Dashboard</a></li>
-          <li><a href="/contact-us" className="hover:text-secondary cursor-pointer">Contact Us</a></li>
+          <><Link to={"/"} className="hover:text-secondary cursor-pointer">Home</Link></>
+          <li><Link to={"/dashboard"} className="hover:text-secondary cursor-pointer">Dashboard</Link></li>
+          <li><Link to={"/contact-us"} className="hover:text-secondary cursor-pointer">Contact Us</Link></li>
         </ul>
       </div>
 
