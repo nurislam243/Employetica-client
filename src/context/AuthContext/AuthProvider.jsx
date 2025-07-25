@@ -20,6 +20,18 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const role = "Employee";
 
+   //Load theme from localStorage
+    const [theme, setTheme] = useState(() => {
+        const storedTheme = localStorage.getItem('theme');
+        return storedTheme === 'dark' ? false : true;
+    });
+
+
+    //Save to localStorage when theme changes
+    useEffect(() => {
+        localStorage.setItem('theme', theme ? 'light' : 'dark');
+    }, [theme]);
+
   useEffect(() => {
   const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
     if (currentUser) {
@@ -93,7 +105,9 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     signIn,
     signInWithGoogle,
-    logOut
+    logOut,
+    theme,
+    setTheme,
   };
 
   return (

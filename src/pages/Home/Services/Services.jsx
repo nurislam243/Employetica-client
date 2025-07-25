@@ -19,7 +19,7 @@ const services = [
     details:
       "Employees can log their daily work, choose task types, input hours worked, and submit updates. Everything is date-specific and managed for HR review.",
     image:
-      "https://i.ibb.co/4n5Bdmgx/man-using-external-storage-used-2.jpg",
+      "https://i.ibb.co/Sw08ps6f/man-using-external-storage-used-2-1.webp",
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ const services = [
     details:
       "HR can verify and pay employees, and each payment is saved with transaction details. Employees can view their monthly salary history anytime.",
     image:
-      "https://i.ibb.co/6JPWnScT/pexels-tima-miroshnichenko-6693655-1.jpg",
+      "https://i.ibb.co/BVFJjv86/pexels-tima-miroshnichenko-6693655-1.webp",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const services = [
     details:
       "HR can analyze submitted tasks and hours via bar charts to identify top performers and optimize workload distribution.",
     image:
-      "https://i.ibb.co/HDbxBJSV/analyzing-business-chart-1.jpg",
+      "https://i.ibb.co/mrsdQRZ8/analyzing-business-chart-1.webp",
   },
   {
     id: 4,
@@ -49,7 +49,7 @@ const services = [
     details:
       "Our system grants dashboard features based on user roles. Admins manage roles and control access. HR oversees employees. Employees focus on workflow updates.",
     image:
-      "https://i.ibb.co/8gjjk0pT/colleagues-working-together-call-center-office-1.jpg",
+      "https://i.ibb.co/ZR8zz2vT/colleagues-working-together-call-center-office-1.webp",
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ const services = [
     details:
       "Detailed work hour analytics per employee are available to assess time distribution and productivity across departments or task categories.",
     image:
-      "https://i.ibb.co/Rkk31fdt/schedule-planner-task-agenda-checklist-concept-min.jpg",
+      "https://i.ibb.co/C3LsSqcv/schedule-planner-task-agenda-checklist-concept-min.webp",
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const services = [
     details:
       "HR and Admin can change user status and control employment access, including toggling verified status, assigning roles, and blocking fired users.",
     image:
-      "https://i.ibb.co/Gfkqrkkg/tv-game-show-with-two-participants-answering-questions-solving-puzzles-host-smiling-women-participat.jpg",
+      "https://i.ibb.co/jvt6B8vm/tv-game-show-with-two-participants-answering-questions-solving-puzzles-host-smiling-women-participat.webp",
   },
   {
     id: 7,
@@ -79,7 +79,7 @@ const services = [
     details:
       "Admins can raise salaries of HRs or Employees as needed. The system prevents accidental or malicious salary reductions for security.",
     image:
-      "https://i.ibb.co/Q3bsbgfP/handsome-businessman-white-shirt-holding-folder-with-cash-looking-aside-with-pensive-expression-sitt.jpg",
+      "https://i.ibb.co/VprdYSsw/handsome-businessman-white-shirt-holding-folder-with-cash-looking-aside-with-pensive-expression-sitt.webp",
   },
   {
     id: 8,
@@ -89,7 +89,7 @@ const services = [
     details:
       "An easy-to-use contact form allows anyone to send inquiries or suggestions. Admin can view all submitted messages through the dashboard.",
     image:
-      "https://i.ibb.co/XZ47760T/pexels-tima-miroshnichenko-5439436-min.jpg",
+      "https://i.ibb.co/CKy5FtzH/pexels-tima-miroshnichenko-5439436-min.webp",
   },
 ];
 
@@ -106,7 +106,7 @@ const Services = () => {
         Our Services
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((service) => (
           <div
             key={service.id}

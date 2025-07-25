@@ -5,6 +5,7 @@ import Logo from '../../components/shared/Logo/Logo';
 import UserAvatarDropdown from '../../components/shared/UserAvatarDropdown/UserAvatarDropdown';
 import { FaClipboardList, FaMoneyBillAlt, FaUsers, FaChartLine, FaUserCog, FaMoneyCheckAlt, FaEnvelopeOpenText, FaChartPie } from 'react-icons/fa';
 import Clock from '../../components/dashboard/Clock';
+import useAuth from '../../hooks/useAuth';
 
 const getDashboardTitle = (role) => {
   if (role === 'Admin') return "Admin Dashboard";
@@ -15,9 +16,10 @@ const getDashboardTitle = (role) => {
 
 const DashboardLayouts = () => {
   const { role } = useUserRole();
+  const { theme } = useAuth();
 
   return (
-    <div className="drawer lg:drawer-open @container">
+    <div className="drawer lg:drawer-open @container" data-theme={theme ? 'light' : 'dark'}>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -52,7 +54,7 @@ const DashboardLayouts = () => {
         </div>
 
         {/* Page content */}
-        <div className="pt-[64px] px-3 @min-[340px]:px-4 @min-[500px]:px-5 @min-[620px]:px-[26px] @min-[1024px]:px-[14px] @min-[1280px]:px-[18px] @min-[1536px]:px-5 @min-[1600px]:px-7">
+        <div className="pt-[64px] min-h-screen px-3 @min-[340px]:px-4 @min-[500px]:px-5 @min-[620px]:px-[26px] @min-[1024px]:px-[14px] @min-[1280px]:px-[18px] @min-[1536px]:px-5 @min-[1600px]:px-7">
           <Outlet />
         </div>
       </div>

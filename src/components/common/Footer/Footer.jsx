@@ -21,7 +21,7 @@ const Footer = () => (
       <div>
         <h5 className="font-bold text-lg text-neutral-content/90 mb-3">Quick Links</h5>
         <ul className="space-y-2 text-sm">
-          <><Link to={"/"} className="hover:text-secondary cursor-pointer">Home</Link></>
+          <li><Link to={"/"} className="hover:text-secondary cursor-pointer">Home</Link></li>
           <li><Link to={"/dashboard"} className="hover:text-secondary cursor-pointer">Dashboard</Link></li>
           <li><Link to={"/contact-us"} className="hover:text-secondary cursor-pointer">Contact Us</Link></li>
         </ul>

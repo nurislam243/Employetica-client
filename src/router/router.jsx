@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts />,
-     errorElement: <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home /> },
       { path: "contact-us", element: <ContactUs /> },

@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Link } from 'react-router';
 import { Navigation } from 'swiper/modules';
 import { useEffect, useRef, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -10,35 +11,35 @@ const slides = [
     id: 1,
     title: "Smart Employee Task Tracking",
     subtitle: "Easily log your daily work and improve team productivity.",
-    image: "https://i.ibb.co/TMKDYvnd/pexels-cottonbro-8453934-min.jpg",
+    image: "https://i.ibb.co/DHFmFVGD/pexels-cottonbro-8453934-min-2.webp",
     buttonText: "Get Started",
   },
   {
     id: 2,
     title: "Streamlined Payroll Management",
     subtitle: "HR and Admin can process salaries securely and efficiently.",
-    image: "https://i.ibb.co/chkZbdTb/front-view-beautiful-young-businesswoman-black-jacket-blue-shirt-working-with-calculator-front-table.jpg",
+    image: "https://i.ibb.co/sJRxxM3L/front-view-beautiful-young-businesswoman-black-jacket-blue-shirt-working-with-calculator-front-table.webp",
     buttonText: "See How It Works",
   },
   {
     id: 3,
     title: "Role-based Access Control",
     subtitle: "Secure your system with tailored access for Admin, HR & Employees.",
-    image: "https://i.ibb.co/9HLqLj2T/woman-touching-control-panel-wall-corridor-min.jpg",
+    image: "https://i.ibb.co/nq07DtLN/woman-touching-control-panel-wall-corridor-min-1.webp",
     buttonText: "Explore Features",
   },
   {
     id: 4,
     title: "Performance Analytics",
     subtitle: "Analyze team performance and identify improvement areas easily.",
-    image: "https://i.ibb.co/Y7ZBhfK1/people-office-analyzing-checking-finance-graphs-min.jpg",
+    image: "https://i.ibb.co/bRPsndm3/people-office-analyzing-checking-finance-graphs-min-1.webp",
     buttonText: "Analyze Now",
   },
   {
     id: 5,
     title: "Controlled Employee Termination",
     subtitle: "Admin can permanently remove HR or Employees — fired users can no longer log in.",
-    image: "https://i.ibb.co/B5zS5Mx6/front-view-beautiful-young-businesswoman-black-jacket-blue-shirt-working-with-laptop-front-table-bus.jpg",
+    image: "https://i.ibb.co/MxWb2Czy/front-view-beautiful-young-businesswoman-black-jacket-blue-shirt-working-with-laptop-front-table-bus.webp",
     buttonText: "See Control Panel",
   }
 ];
@@ -124,9 +125,9 @@ const Banner = () => {
               <div className="relative z-10 text-center text-white px-4 max-w-3xl">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">{slide.title}</h2>
                 <p className="text-lg md:text-xl mb-6">{slide.subtitle}</p>
-                <button className="bg-primary hover:bg-primary/50 cursor-pointer text-white px-5 py-[9px] rounded-lg font-medium shadow-lg transition duration-300">
-                  {slide.buttonText}
-                </button>
+                <Link to={'/register'} className="bg-primary hover:bg-primary/50 text-lg cursor-pointer text-white px-5 py-[9px] rounded-lg font-bold shadow-lg transition duration-300">
+                  Get Start
+                </Link>
               </div>
             </div>
           </SwiperSlide>

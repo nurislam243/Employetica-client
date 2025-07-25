@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import error404 from "../../../assets/animation/error404.json"
 import error from "../../../assets/animation/error.json";
 import Lottie from 'lottie-react';
-// import { AuthContext } from '../../context/AuthContext/AuthContext';
+import useAuth from '../../../hooks/useAuth';
 // import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
-    // const {theme} = useContext(AuthContext);
-    // data-theme={theme ? 'light' : 'dark'}
+    const { theme } = useAuth();
     return (
-        <div className="@container p-3" >
+        <div className="@container p-3" data-theme={theme ? 'light' : 'dark'}>
             {/* <Helmet>
             <title>Page Not Found | TechTinker</title>
             </Helmet> */}
