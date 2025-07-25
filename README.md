@@ -7,12 +7,12 @@
 ## 🔐 Admin Access
 
 - **Admin Email:** `admin@employetica.com`
-- **Admin Password:** `admin123`
+- **Admin Password:** `123QWE!`
 
 ## 🌐 Live Site
 
-[🔗 Live Site](https://employetica.web.app)
-
+[🔗 Live Site](https://employetica.web.app/)
+[  Backend Repo](https://github.com/Programming-Hero-Web-Course4/b11a12-server-side-nurislam243)
 ---
 
 ## 🧩 Technologies Used (Client)
