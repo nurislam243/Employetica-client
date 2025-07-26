@@ -52,9 +52,9 @@ const Navbar = ({isScrolled}) => {
 
 
   const getDashboardPath = (role) => {
-    if (role === 'Employee') return '/dashboard/work-sheet';
-    if (role === 'HR') return '/dashboard/employee-list';
-    if (role === 'Admin') return '/dashboard/all-employee-list';
+    if (role === 'Employee') return '/dashboard/employee-overview';
+    if (role === 'HR') return '/dashboard/hr-overview';
+    if (role === 'Admin') return '/dashboard/admin-overview';
     return '/dashboard';
   };
 
