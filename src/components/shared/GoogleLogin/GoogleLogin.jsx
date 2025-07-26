@@ -1,11 +1,15 @@
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useLocation, useNavigate } from "react-router";
 
 
 const GoogleLogin = () => {
   const { signInWithGoogle } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
 
   const handleGoogleLogin = async () => {
     try {
@@ -34,6 +38,7 @@ const GoogleLogin = () => {
               ? "Welcome back to Employetica!"
               : "Account created successfully!",
         });
+        navigate(from);
       }
     } catch (err) {
       Swal.fire({

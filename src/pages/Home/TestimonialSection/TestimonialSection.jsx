@@ -58,10 +58,10 @@ const Testimonial = () => {
       {/* Arrow buttons */}
       <div className="flex justify-end mr-5">
         <div className="space-x-4">
-          <button ref={prevRef} className="bg-white shadow hover:bg-gray-100 p-3 rounded-full">
+          <button ref={prevRef} className="cursor-pointer bg-white shadow hover:bg-gray-100 p-3 rounded-full">
             <FaArrowLeft className="text-xl text-primary" />
           </button>
-          <button ref={nextRef} className="bg-white shadow hover:bg-gray-100 p-3 rounded-full">
+          <button ref={nextRef} className="cursor-pointer bg-white shadow hover:bg-gray-100 p-3 rounded-full">
             <FaArrowRight className="text-xl text-primary" />
           </button>
         </div>

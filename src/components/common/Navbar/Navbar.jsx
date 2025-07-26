@@ -14,7 +14,6 @@ const Navbar = ({isScrolled}) => {
   const navigate = useNavigate();
 
   const { user , logOut } = useAuth();
-  console.log(user);
 
   // handle logout
   const handleLogout = async () => {
@@ -111,7 +110,7 @@ const Navbar = ({isScrolled}) => {
                     Register
                   </Link>
                 </div>
-              ) : <UserAvatarDropdown handleLogout={handleLogout}></UserAvatarDropdown>
+              ) : <UserAvatarDropdown></UserAvatarDropdown>
             }
           </div>
         </div>

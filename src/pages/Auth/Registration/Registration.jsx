@@ -4,13 +4,13 @@ import { useState } from "react";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Registration = () => {
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile, refreshUser } = useAuth();
   const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from || '/';
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
   const {
     register,
     handleSubmit,
@@ -80,6 +80,7 @@ const Registration = () => {
         if (res.data.insertedId) {
           Swal.fire("Success", "Account created successfully!", "success");
           navigate(from);
+          refreshUser();
         }
       })
 
@@ -217,6 +218,12 @@ const Registration = () => {
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
+        <p className="text-sm text-center mt-4">
+          Already have an account?{" "}
+          <Link to="/login" className="text-primary hover:underline font-medium">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

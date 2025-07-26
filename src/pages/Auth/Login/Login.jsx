@@ -2,12 +2,14 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { auth } from "../../../firebase/firebase.init";
 import GoogleLogin from "../../../components/shared/GoogleLogin/GoogleLogin";
 
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from || '/';
   const {
     register,
     handleSubmit,
@@ -26,7 +28,7 @@ const Login = () => {
         timer: 1500,
       });
 
-      navigate("/dashboard");
+      navigate(from);
     } catch (error) {
       let message = "Login failed!";
       if (error.code === "auth/user-not-found") {

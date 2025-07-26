@@ -78,6 +78,11 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const refreshUser = () => {
+    const currentUser = auth.currentUser;
+    setUser({ ...currentUser });
+  };
+
   const updateUserProfile = (profileInfo) => {
     return updateProfile(auth.currentUser, profileInfo);
   };
@@ -108,6 +113,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     theme,
     setTheme,
+    refreshUser
   };
 
   return (

@@ -5,6 +5,7 @@ import EmployeeCardView from './EmployeeCardView';
 import useVerifiedUsers from '../../../../hooks/useVerifiedUsers';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import NoDataFound from '../../../Error/NoDataFound/NoDataFound';
+import Swal from 'sweetalert2';
 
 const AllEmployeeList = () => {
   const [view, setView] = useState('table');
@@ -18,33 +19,57 @@ const AllEmployeeList = () => {
   const handleMakeHR = async (id) => {
     try {
       await axiosSecure.patch(`/users/make-hr/${id}`);
-      alert(`User ${id} has been made HR successfully.`);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: `User ${id} has been made HR successfully.`,
+      });
       refetch();
     } catch (error) {
       console.error(error);
-      alert('Failed to update user role.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed!',
+        text: 'Failed to update user role.',
+      });
     }
   };
 
   const handleFire = async (id) => {
     try {
       await axiosSecure.patch(`/users/fire/${id}`);
-      alert(`User ${id} has been fired.`);
+      Swal.fire({
+        icon: 'success',
+        title: 'Fired!',
+        text: `User ${id} has been fired.`,
+      });
       refetch();
     } catch (error) {
       console.error(error);
-      alert('Failed to fire user.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Failed to fire user.',
+      });
     }
   };
 
   const handleAdjustSalary = async (id, newSalary) => {
     try {
       await axiosSecure.patch(`/users/salary/${id}`, { newSalary });
-      alert(`Salary of user ${id} updated to ${newSalary}.`);
+      Swal.fire({
+        icon: 'success',
+        title: 'Salary Updated!',
+        text: `Salary of user ${id} updated to ${newSalary}.`,
+      });
       refetch();
     } catch (error) {
       console.error(error);
-      alert('Failed to update salary.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Failed to update salary.',
+      });
     }
   };
 

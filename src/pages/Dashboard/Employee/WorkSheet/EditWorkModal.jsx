@@ -11,7 +11,7 @@ const EditWorkModal = ({ entry, onClose, onUpdate }) => {
       ...entry,
       taskType: task,
       hoursWorked: hours,
-      date: date.toDateString(),
+      date: date.toISOString().split("T")[0]
     };
     onUpdate(updated);
   };

@@ -37,9 +37,9 @@ const EmployeeDetails = () => {
     enabled: !!slug,
   });
 
-  // 3. Group payments by month-year and sum salary amounts
+  // Group payments by month-year and sum salary amounts
   const chartData = payments.reduce((acc, payment) => {
-    const monthYear = `${payment.month.slice(0, 3)} ${payment.year}`; // e.g. "Jan 2022"
+    const monthYear = `${payment.month.slice(0, 3).toUpperCase()} ${payment.year}`; 
     if (!acc[monthYear]) acc[monthYear] = 0;
     acc[monthYear] += payment.amount;
     return acc;

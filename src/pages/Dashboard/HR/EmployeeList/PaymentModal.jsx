@@ -38,7 +38,21 @@ const PaymentModal = ({ employee, closeModal, refetch }) => {
       closeModal();
     } catch (err) {
       console.error("Payment failed", err);
-      alert("Something went wrong");
+      if (err.response && err.response.status === 400) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Duplicate Request',
+        text: err.response.data.message || 'Payment already requested for this month.',
+        confirmButtonColor: '#f59e0b',
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Something went wrong. Please try again later.',
+        confirmButtonColor: '#ef4444',
+      });
+    }
     }
   };
 
@@ -55,13 +69,24 @@ const PaymentModal = ({ employee, closeModal, refetch }) => {
             readOnly
             className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
           />
+          {/* Month Dropdown */}
           <label className="font-medium">Month</label>
-          <input
+          <select
             {...register("month", { required: "Month is required" })}
-            placeholder="Month (e.g., July)"
             className={`input input-bordered w-full ${errors.month ? "border-red-500" : ""}`}
-          />
+          >
+            <option value="">Select Month</option>
+            {[
+              "January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"
+            ].map((month) => (
+              <option key={month} value={month.toLowerCase()}>
+                {month}
+              </option>
+            ))}
+          </select>
           {errors.month && <p className="text-red-500 text-sm">{errors.month.message}</p>}
+          
           <label className="font-medium">Year</label>
           <input
             {...register("year", {
