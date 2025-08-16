@@ -5,6 +5,8 @@ import CompanyAchievements from '../CompanyAchievements/CompanyAchievements';
 import TestimonialSection from '../TestimonialSection/TestimonialSection';
 import AboutUs from '../AboutUs/AboutUs';
 import RecentUpdates from '../RecentUpdates/RecentUpdates';
+import TopPerformers from '../TopPerformers/TopPerformers';
+import CTA from '../CTA/CTA';
 
 const Home = () => {
     return (
@@ -15,7 +17,9 @@ const Home = () => {
                 <CompanyAchievements></CompanyAchievements>
                 <RecentUpdates></RecentUpdates>
                 <AboutUs></AboutUs>
+                <TopPerformers></TopPerformers>
                 <TestimonialSection></TestimonialSection>
+                <CTA></CTA>
             </div>
         </div>
     );
