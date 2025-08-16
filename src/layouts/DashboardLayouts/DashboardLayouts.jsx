@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router";
 import useUserRole from '../../hooks/useUserRole';
 import Logo from '../../components/shared/Logo/Logo';
 import UserAvatarDropdown from '../../components/shared/UserAvatarDropdown/UserAvatarDropdown';
-import { FaClipboardList, FaMoneyBillAlt, FaUsers, FaChartLine, FaUserCog, FaMoneyCheckAlt, FaEnvelopeOpenText, FaChartPie } from 'react-icons/fa';
+import { FaClipboardList, FaMoneyBillAlt, FaUsers, FaChartLine, FaUserCog, FaMoneyCheckAlt, FaEnvelopeOpenText, FaChartPie, FaUser } from 'react-icons/fa';
 import Clock from '../../components/dashboard/Clock';
 import useAuth from '../../hooks/useAuth';
 
@@ -66,8 +66,7 @@ const DashboardLayouts = () => {
           <div className="mb-[20px] mt-[10px] ml-[8px]">
             <Logo />
           </div>
-
-
+    
           {/* Role-based navigation */}
           {role === "Employee" && (
             <>
@@ -203,6 +202,19 @@ const DashboardLayouts = () => {
               </li>
             </>
           )}
+
+
+          <NavLink 
+            to={'profile'} 
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center gap-2 bg-primary/90 text-primary-content text-base sm:text-lg px-3 py-1 rounded"
+                : "flex items-center gap-2 text-base sm:text-lg px-3 py-1"
+            }
+          >
+            <FaUser/>
+            Your Profile
+          </NavLink>
 
         </ul>
       </div>

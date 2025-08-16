@@ -27,6 +27,7 @@ import AdminOverview from "../pages/Dashboard/Admin/AdminOverview/AdminOverview"
 import EmployeeOverview from "../pages/Dashboard/Employee/EmployeeOverview/EmployeeOverview";
 import HrOverview from "../pages/Dashboard/HR/HROverview/HrOverview";
 import ErrorPage from "../pages/Error/ErrorPage/ErrorPage";
+import Profile from "../components/dashboard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -147,6 +148,15 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
+
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute allowedRoles={["Employee", "HR", "Admin"]}>
+            <Profile></Profile>
+          </PrivateRoute>
+        )
+      }
     ]
   }
 ]);
