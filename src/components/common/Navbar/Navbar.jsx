@@ -67,7 +67,7 @@ const Navbar = ({isScrolled}) => {
 
   return (
     <header
-      className={`fixed bg-base-300 w-full z-50 shadow transition-all duration-300 px-3 @min-[280px]:px-[14px] @min-[350px]:px-4 @min-[400px]:px-5 @min-[500px]:px-8 @min-[1580px]:px-0 ${
+      className={`fixed bg-base-200 w-full z-50 shadow transition-all duration-300 px-3 @min-[280px]:px-[14px] @min-[350px]:px-4 @min-[400px]:px-5 @min-[500px]:px-8 @min-[1580px]:px-0 ${
         isScrolled ? "py-3" : "py-4 "
       }`}
     >

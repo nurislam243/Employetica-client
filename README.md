@@ -9,7 +9,6 @@
 - **Admin Email:** `admin@employetica.com`
 - **Admin Password:** `123QWE!`
 
-## 🌐 Live Site
 
 ## 🌐 Live Site
 
