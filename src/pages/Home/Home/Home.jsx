@@ -7,6 +7,7 @@ import AboutUs from '../AboutUs/AboutUs';
 import RecentUpdates from '../RecentUpdates/RecentUpdates';
 import TopPerformers from '../TopPerformers/TopPerformers';
 import CTA from '../CTA/CTA';
+import FAQ from '../FAQ/FAQ';
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                 <TopPerformers></TopPerformers>
                 <TestimonialSection></TestimonialSection>
                 <CTA></CTA>
+                <FAQ></FAQ>
             </div>
         </div>
     );
