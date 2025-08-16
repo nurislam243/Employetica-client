@@ -3,22 +3,22 @@ import { FaTrophy, FaUsers, FaProjectDiagram, FaClock } from "react-icons/fa";
 
 const achievementsData = [
   {
-    icon: <FaUsers className="text-primary w-10 h-10" />,
+    icon: <FaUsers className="w-10 h-10" />,
     title: "500+ Employees Managed",
     description: "Efficiently managing a large workforce with seamless workflow tracking.",
   },
   {
-    icon: <FaProjectDiagram className="text-secondary w-10 h-10" />,
+    icon: <FaProjectDiagram className="w-10 h-10" />,
     title: "1000+ Projects Completed",
     description: "Successfully delivered diverse projects across multiple departments.",
   },
   {
-    icon: <FaClock className="text-accent w-10 h-10" />,
+    icon: <FaClock className="w-10 h-10" />,
     title: "5 Years of Excellence",
     description: "Providing reliable employee management solutions for over 5 years.",
   },
   {
-    icon: <FaTrophy className="text-info w-10 h-10" />,
+    icon: <FaTrophy className="w-10 h-10" />,
     title: "Awarded Best HR Solution",
     description: "Recognized as a top HR management platform by industry experts.",
   },
@@ -37,7 +37,7 @@ const CompanyAchievements = () => {
             key={index}
             className="bg-base-200/70 hover:bg-base-300 rounded shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="mb-4">{icon}</div>
+            <div className="mb-4 text-primary">{icon}</div>
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-base-content/90 text-sm">{description}</p>
           </div>

@@ -42,20 +42,12 @@ const Profile = () => {
           <h2 className="text-2xl font-bold mb-1 text-primary">
             {user?.displayName || "User Name"}
           </h2>
-          <p className="text-secondary mb-4">{user?.role || "Member"}</p>
+          <p className="text-secondary mb-4">{userProfile?.role || "Member"}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
             <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
-              <p className="font-semibold text-base-content/80">Email</p>
-              <p>{user?.email || "example@email.com"}</p>
-            </div>
-            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
-              <p className="font-semibold text-base-content/80">Phone</p>
-              <p>{user?.phone || "+880123456789"}</p>
-            </div>
-            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
-              <p className="font-semibold text-base-content/80">Address</p>
-              <p>{user?.address || "Dhaka, Bangladesh"}</p>
+              <p className="font-semibold text-base-content/80">Designation</p>
+              <p>{userProfile?.designation}</p>
             </div>
             <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
               <p className="font-semibold text-base-content/80">Joined</p>
@@ -68,6 +60,26 @@ const Profile = () => {
                     })
                   : "2025-01-01"}
               </p>
+            </div>
+            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
+              <p className="font-semibold text-base-content/80">Bank Account No.</p>
+              <p>{userProfile?.bank_account_no}</p>
+            </div>
+            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
+              <p className="font-semibold text-base-content/80">Salary</p>
+              <p>{userProfile?.salary}</p>
+            </div>
+            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
+              <p className="font-semibold text-base-content/80">Email</p>
+              <p>{user?.email || "example@email.com"}</p>
+            </div>
+            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
+              <p className="font-semibold text-base-content/80">Phone</p>
+              <p>{user?.phone || "+8801778249088"}</p>
+            </div>
+            <div className="card bg-base-200 shadow-sm p-4 rounded-lg">
+              <p className="font-semibold text-base-content/80">Address</p>
+              <p>{userProfile?.address || "Dhaka, Bangladesh"}</p>
             </div>
           </div>
         </div>
