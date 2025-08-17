@@ -4,6 +4,8 @@ import { FaUserTie, FaUserCheck, FaMoneyBillWave, FaClock } from 'react-icons/fa
 
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import StatCard from '../../../../components/dashboard/StatCard';
+import HrPaymentChart from './HrPaymentChart';
+import HrEmployeeStatusChart from './HrEmployeeStatusChart';
 
 const HrOverview = () => {
   const axiosSecure = useAxiosSecure();
@@ -68,6 +70,17 @@ const HrOverview = () => {
           out of which <strong>{verifiedEmployees}</strong> are verified. There are <strong>{pendingPayments}</strong> pending salary payments.
           Keep an eye on employee leaves and approvals. Use this panel to stay on top of your HR responsibilities.
         </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <HrEmployeeStatusChart
+          totalEmployees={totalEmployees}
+          verifiedEmployees={verifiedEmployees}
+        />
+        <HrPaymentChart
+          pendingPayments={pendingPayments}
+          totalEmployees={totalEmployees}
+        />
       </div>
     </div>
   );

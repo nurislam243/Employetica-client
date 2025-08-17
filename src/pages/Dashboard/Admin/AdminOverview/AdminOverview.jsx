@@ -6,6 +6,8 @@ import {
 } from 'react-icons/fa';
 import StatCard from '../../../../components/dashboard/StatCard';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import AdminUserDistributionChart from './AdminUserDistributionChart';
+import AdminPaymentChart from './AdminPaymentChart';
 
 const AdminOverview = () => {
   const axiosSecure = useAxiosSecure();
@@ -95,6 +97,19 @@ const AdminOverview = () => {
             Ensure smooth user onboarding and HR recruitment management.
           </li>
         </ul>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AdminUserDistributionChart
+          totalUsers={totalUsers}
+          totalEmployees={totalEmployees}
+          totalHRs={totalHRs}
+        />
+
+        <AdminPaymentChart
+          totalPayments={totalPayments}
+          totalSalaryBudget={totalSalaryBudget}
+        />
       </div>
     </div>
   );
