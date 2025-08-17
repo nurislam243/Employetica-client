@@ -62,6 +62,7 @@ const Navbar = ({isScrolled}) => {
     { name: "Home", path: "/" },
     { name: "Dashboard", path: getDashboardPath(role), private: true },
     { name: "All Update", path: "/all-update"},
+    { name: "Blogs", path: "/blogs"},
     { name: "Contact Us", path: "/contact-us", private: false },
   ];
 

@@ -1,0 +1,66 @@
+[
+  {
+    "_id": "1",
+    "title": "Top 10 Productivity Tips for Remote Employees",
+    "author": "Jane Smith",
+    "date": "2025-08-01",
+    "description": "Working remotely can be challenging if you don't manage your time effectively. In this article, we explore 10 practical productivity tips to help remote employees stay focused, prioritize tasks, and maintain a healthy work-life balance. From setting clear goals, creating a dedicated workspace, to leveraging digital tools, these strategies will boost your efficiency and reduce stress.",
+    "image": "https://i.ibb.co.com/hSj6sPP/pexels-photo-3184465.webp"
+  },
+  {
+    "_id": "2",
+    "title": "How to Build a Strong Company Culture",
+    "author": "Mark Johnson",
+    "date": "2025-08-03",
+    "description": "A strong company culture attracts talent, improves retention, and drives business success. This article explains the core elements of building a positive workplace culture, including transparent communication, recognition programs, team-building activities, and clear values. Learn how leaders can inspire engagement and foster collaboration across all levels of the organization.",
+    "image": "https://i.ibb.co.com/rKn1X0sk/pexels-photo-3184291.webp"
+  },
+  {
+    "_id": "3",
+    "title": "The Future of HR: Trends to Watch in 2025",
+    "author": "Emily Davis",
+    "date": "2025-08-05",
+    "description": "Human Resources is evolving rapidly with technology and changing workforce expectations. Explore the top trends in HR for 2025, including AI-driven recruitment, remote employee engagement, personalized learning platforms, and data analytics. Stay ahead by understanding how these trends can improve productivity, reduce turnover, and enhance the employee experience.",
+    "image": "https://i.ibb.co.com/0VtRL28Z/pexels-photo-3184467-1.webp"
+  },
+  {
+    "_id": "4",
+    "title": "Effective Communication Skills for Leaders",
+    "author": "Robert Lee",
+    "date": "2025-08-06",
+    "description": "Strong communication skills are crucial for effective leadership. This article covers techniques to actively listen, give clear instructions, provide constructive feedback, and inspire teams. By developing emotional intelligence and tailoring communication to different personalities, leaders can build trust, resolve conflicts, and drive team performance to achieve organizational goals.",
+    "image": "https://i.ibb.co.com/whDJCG1h/pexels-photo-3184357.webp"
+  },
+  {
+    "_id": "5",
+    "title": "Time Management Hacks for Busy Professionals",
+    "author": "Sophia Brown",
+    "date": "2025-08-07",
+    "description": "Time management is an essential skill for busy professionals. Learn effective strategies like prioritizing tasks, avoiding multitasking, using productivity tools, and setting boundaries to increase efficiency. This guide provides practical tips to help you complete more work in less time, reduce stress, and achieve a better balance between professional and personal life.",
+    "image": "https://i.ibb.co.com/hhrgQJp/pexels-photo-3184297-1.webp"
+  },
+  {
+    "_id": "6",
+    "title": "Employee Onboarding Best Practices",
+    "author": "Michael Green",
+    "date": "2025-08-08",
+    "description": "A seamless onboarding experience ensures new employees feel welcomed and become productive faster. Discover best practices for onboarding, including structured training programs, mentorship, clear expectations, and continuous feedback. This article helps HR teams design processes that reduce turnover and create a positive first impression for new hires.",
+    "image": "https://i.ibb.co.com/r27VCyvT/pexels-photo-3184637.webp"
+  },
+  {
+    "_id": "7",
+    "title": "Remote Team Collaboration Tools You Should Know",
+    "author": "Laura Wilson",
+    "date": "2025-08-09",
+    "description": "Collaborating effectively in a remote team requires the right tools. This guide explores communication platforms, project management apps, file-sharing solutions, and virtual meeting software that make remote teamwork seamless. Learn how to choose the best tools for your team to boost productivity and maintain strong connections.",
+    "image": "https://i.ibb.co.com/XRwqg48/pexels-photo-3184460.webp"
+  },
+  {
+    "_id": "8",
+    "title": "The Art of Giving Feedback",
+    "author": "David Martinez",
+    "date": "2025-08-10",
+    "description": "Providing feedback is an art that can significantly improve team performance. This article explores techniques for delivering constructive feedback, recognizing achievements, and addressing challenges effectively. Learn how to give feedback that motivates employees, strengthens relationships, and contributes to personal and organizational growth.",
+    "image": "https://i.ibb.co.com/sp8Z8Gw6/pexels-photo-3184435.webp"
+  }
+]
