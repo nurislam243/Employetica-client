@@ -1,4 +1,5 @@
 import { FaUserShield, FaFireAlt, FaMoneyCheckAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const EmployeeTableView = ({ employees, onMakeHR, onFire, onAdjustSalary, salaryInput, setSalaryInput }) => {
   return (
@@ -21,7 +22,7 @@ const EmployeeTableView = ({ employees, onMakeHR, onFire, onAdjustSalary, salary
         </thead>
         <tbody>
           {employees.map((emp, index) => (
-            <tr key={emp._id}>
+            <tr key={emp._id} className="bg-base-100">
               <td>{index + 1}</td>
 
               <td>
@@ -41,9 +42,9 @@ const EmployeeTableView = ({ employees, onMakeHR, onFire, onAdjustSalary, salary
 
               <td>
                 {emp.isVerified ? (
-                  <span className="badge badge-success">Yes</span>
+                  <span className="badge badge-primary">Yes</span>
                 ) : (
-                  <span className="badge badge-error">No</span>
+                  <span className="badge badge-secondary">No</span>
                 )}
               </td>
 
@@ -52,21 +53,36 @@ const EmployeeTableView = ({ employees, onMakeHR, onFire, onAdjustSalary, salary
                   <input
                     type="number"
                     placeholder="New Salary"
-                    className="input input-sm input-bordered"
+                    className="input input-sm input-bordered bg-base-100"
                     value={salaryInput[emp._id] ?? ''}
                     onChange={(e) =>
-                      setSalaryInput((prev) => ({ ...prev, [emp._id]: e.target.value }))
+                      setSalaryInput((prev) => ({
+                        ...prev,
+                        [emp._id]: e.target.value,
+                      }))
                     }
                   />
                   <button
-                    className="btn btn-sm btn-info"
+                    className="btn btn-sm btn-primary"
                     onClick={() => {
                       const newSalary = Number(salaryInput[emp._id]);
                       if (isNaN(newSalary) || newSalary <= 0) {
-                        return alert('Enter a valid salary');
+                        return Swal.fire({
+                          icon: 'error',
+                          title: 'Invalid Salary',
+                          text: 'Enter a valid salary',
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
                       }
                       if (newSalary < emp.salary) {
-                        return alert("Can't decrease salary");
+                        return Swal.fire({
+                          icon: 'warning',
+                          title: 'Decrease Not Allowed',
+                          text: "Can't decrease salary",
+                          timer: 2000,
+                          showConfirmButton: false,
+                        });
                       }
                       onAdjustSalary(emp._id, newSalary);
                       setSalaryInput((prev) => ({ ...prev, [emp._id]: '' }));
@@ -80,22 +96,22 @@ const EmployeeTableView = ({ employees, onMakeHR, onFire, onAdjustSalary, salary
               <td>
                 {emp.role?.toLowerCase() === 'employee' ? (
                   <button
-                    className="btn btn-sm btn-success"
+                    className="btn btn-sm btn-secondary"
                     onClick={() => onMakeHR(emp._id)}
                   >
                     <FaUserShield />
                   </button>
                 ) : (
-                  <span className="text-green-600 font-semibold">HR</span>
+                  <span className="text-primary font-semibold">HR</span>
                 )}
               </td>
 
               <td>
                 {emp.fired ? (
-                  <span className="text-red-500 font-semibold">Fired</span>
+                  <span className="text-secondary font-semibold">Fired</span>
                 ) : (
                   <button
-                    className="btn btn-sm btn-error"
+                    className="btn btn-sm btn-primary"
                     onClick={() => onFire(emp._id)}
                   >
                     <FaFireAlt />

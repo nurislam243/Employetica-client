@@ -78,7 +78,7 @@ const Navbar = ({isScrolled}) => {
         <Logo></Logo>
 
         {/* Nav Links (Center) */}
-        <div className="hidden md:flex flex-1 justify-center">
+        <div className="hidden @min-[1006px]:flex flex-1 justify-center">
           <nav className="flex gap-6 items-center">
             {navItems.map(({ name, path, private: isPrivate }) =>
               !isPrivate || user ? (
@@ -99,7 +99,7 @@ const Navbar = ({isScrolled}) => {
         </div>
 
         {/* Auth Buttons or User Photo (Right) */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden @min-[1006px]:flex items-center gap-4">
           <ThemeToggle></ThemeToggle>
           <div className="flex items-center">
             {
@@ -118,7 +118,7 @@ const Navbar = ({isScrolled}) => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="md:hidden flex items-center">
+        <div className="@min-[1006px]:hidden flex items-center">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-2xl text-primary"
@@ -131,7 +131,7 @@ const Navbar = ({isScrolled}) => {
 
       {/* Mobile Menu Drawer */}
       {isMenuOpen && (
-        <div className="md:hidden bg-base-100 w-full absolute top-full left-0 shadow-lg">
+        <div className="@min-[1006px]:hidden bg-base-100 w-full absolute top-full left-0 shadow-lg">
           <div className="flex flex-col items-center gap-4 py-4">
             {
               user && <div className="flex justify-center items-center flex-col">

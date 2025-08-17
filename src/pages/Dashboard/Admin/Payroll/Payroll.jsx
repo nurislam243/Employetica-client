@@ -56,19 +56,19 @@ const Payroll = () => {
       {/* Filter Buttons */}
       <div className="flex justify-center gap-4 mb-6">
         <button
-          className={`px-4 py-1 rounded ${filter === 'all' ? 'bg-primary text-white' : 'bg-base-300'}`}
+          className={`px-4 py-1 cursor-pointer rounded ${filter === 'all' ? 'bg-primary text-white' : 'bg-base-300'}`}
           onClick={() => setFilter('all')}
         >
           All
         </button>
         <button
-          className={`px-4 py-1 rounded ${filter === 'pending' ? 'bg-yellow-500 text-white' : 'bg-base-300'}`}
+          className={`px-4 py-1 cursor-pointer rounded ${filter === 'pending' ? 'bg-primary text-white' : 'bg-base-300'}`}
           onClick={() => setFilter('pending')}
         >
           Pending
         </button>
         <button
-          className={`px-4 py-1 rounded ${filter === 'paid' ? 'bg-green-600 text-white' : 'bg-base-300'}`}
+          className={`px-4 py-1 cursor-pointer rounded ${filter === 'paid' ? 'bg-primary text-white' : 'bg-base-300'}`}
           onClick={() => setFilter('paid')}
         >
           Paid
@@ -105,11 +105,11 @@ const Payroll = () => {
                   <td className="border px-4 py-2">
                     {payment.paymentDate
                       ? new Date(payment.paymentDate).toLocaleDateString()
-                      : <span className="text-red-500 font-semibold">Pending</span>}
+                      : <span className="text-secondary/95 font-semibold">Pending</span>}
                   </td>
                   <td className="border px-4 py-2 text-center">
                     <button
-                      className="btn btn-sm btn-success"
+                      className="btn btn-sm btn-primary"
                       onClick={() => handlePay(payment._id)}
                       disabled={payment.paymentDate}
                     >
