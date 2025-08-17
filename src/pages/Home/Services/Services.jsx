@@ -103,7 +103,7 @@ const Services = () => {
 
   return (
     <section className="max-w-[1536px] mx-auto py-16" id="services">
-      <h2 className="text-3xl font-bold text-center text-primary mb-12">
+      <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-12 text-center">
         Our Services
       </h2>
 

@@ -4,6 +4,7 @@ import { FaTasks, FaMoneyCheckAlt, FaCalendarCheck, FaUserShield, FaUserCheck, F
 
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import StatCard from '../../../../components/dashboard/StatCard';
+import TaskChart from './TaskChart';
 
 const EmployeeOverview = () => {
   const axiosSecure = useAxiosSecure();
@@ -91,6 +92,14 @@ const EmployeeOverview = () => {
           Your current salary is <strong>${salary}</strong>. {lastPaymentDate ? `Your last payment was on ${new Date(lastPaymentDate).toLocaleDateString()}.` : 'No payment history found.'}
           Your account is currently <span className={`font-semibold ${isVerified ? 'text-green-600' : 'text-red-600'}`}>{isVerified ? 'Verified' : 'Not Verified'}</span>.
         </p>
+      </div>
+      
+      <div className="">
+        <TaskChart
+          totalTasks={totalTasks}
+          paidPayments={paidPayments}
+          salary={salary}
+        />
       </div>
     </div>
   );

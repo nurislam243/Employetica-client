@@ -50,10 +50,10 @@ const Testimonial = () => {
 
   return (
     <section className="py-12 text-center relative max-w-[1536px] mx-auto w-full">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+      <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-[13px] text-center">
         Trusted by Employees, HRs & Admins
       </h2>
-      <p className="text-base-content/90 mb-10">Real stories from real users</p>
+      <p className="text-base-content/80 mb-10">Real stories from real users</p>
 
       {/* Arrow buttons */}
       <div className="flex justify-end mr-5">
@@ -96,7 +96,7 @@ const Testimonial = () => {
             {({ isActive }) => (
               <div
                 className={`p-6 rounded mt-9 shadow border border-base-content/10 transition-transform duration-300 ease-in-out flex flex-col items-center text-center
-                ${isActive ? 'bg-base-300/80 hover:bg-base-300' : 'bg-base-200 opacity-60'}`}
+                ${isActive ? 'bg-base-200 hover:bg-base-300' : 'bg-base-200 opacity-50'}`}
               >
                 <img
                   src={item.image}

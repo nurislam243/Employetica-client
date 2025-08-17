@@ -29,18 +29,17 @@ const Footer = () => (
 
       {/* Services Outline */}
       <div>
-        <h5 className="font-bold text-lg text-neutral-content/90 mb-3">Services</h5>
+        <h5 className="font-bold text-lg text-neutral-content/90 mb-3">Others</h5>
         <ul className="space-y-2 text-sm">
-          <li className="hover:text-secondary cursor-pointer">Payment Tracking</li>
+          <li className="hover:text-secondary cursor-pointer"><Link to={'/all-update'}>All Update</Link></li>
           <li className="hover:text-secondary cursor-pointer">Performance Monitoring</li>
-          <li className="hover:text-secondary cursor-pointer">Role‑Based Access</li>
         </ul>
       </div>
 
       {/* Newsletter & Contact */}
       <div>
         <h5 className="font-bold text-lg text-neutral-content/90 mb-3">Stay Connected</h5>
-        <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
+        {/* <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
           <input
             type="email"
             placeholder="Your email"
@@ -48,7 +47,7 @@ const Footer = () => (
             required
           />
           <button type="submit" className="btn btn-sm btn-primary">Subscribe</button>
-        </form>
+        </form> */}
         <div className="flex mt-4 gap-4 text-xl">
           <a href="https://www.linkedin.com/in/md-nur-islam1/" className="hover:text-[#0077B5] transition-colors duration-300" target="blank">
             <FaLinkedinIn />

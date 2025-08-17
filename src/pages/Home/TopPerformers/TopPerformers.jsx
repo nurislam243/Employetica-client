@@ -41,16 +41,16 @@ const performers = [
 const TopPerformers = () => {
   return (
     <section className="py-16 bg-base-100">
-      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-extrabold text-primary mb-10 text-center">
+      <div className="max-w-[1536px] mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-10 text-center">
           Top Performers
         </h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
           {performers.map((person) => (
             <div
               key={person.id}
-              className="card bg-base-200 shadow-lg rounded-xl border border-base-300 hover:shadow-2xl transition duration-300"
+              className="card bg-base-200 shadow-md rounded border border-base-300 hover:shadow-xl transition duration-300"
             >
               <figure className="px-6 pt-6">
                 <img

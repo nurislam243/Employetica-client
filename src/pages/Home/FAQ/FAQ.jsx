@@ -92,11 +92,11 @@ const FAQ = () => {
 
   return (
     <section className="py-16 bg-base-100">
-      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-extrabold text-primary mb-3 text-center">
+      <div className="max-w-[1536px] mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-[13px] text-center">
           Frequently Asked Questions
         </h2>
-        <p className="text-center text-secondary mb-12">
+        <p className="text-center text-base-content/80 mb-10">
           Have questions about Employetica? Here are answers to help you get started and manage your team efficiently.
         </p>
 
@@ -104,7 +104,7 @@ const FAQ = () => {
           {visibleFaqs.map((faq) => (
             <div
               key={faq.id}
-              className="flex gap-4 p-4 bg-base-200 rounded-lg border border-base-300 hover:shadow-lg transition duration-300"
+              className="flex gap-4 p-4 bg-base-200 rounded border border-base-300 hover:shadow-lg transition duration-300"
             >
               <div className="flex-shrink-0">{faq.icon}</div>
               <div>
@@ -120,7 +120,7 @@ const FAQ = () => {
         <div className="text-center mt-8 flex justify-end">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="px-6 py-2 rounded-full bg-primary text-white hover:bg-primary-focus transition"
+            className="btn btn-primary"
           >
             {showAll ? "Show Less" : "Show More"}
           </button>

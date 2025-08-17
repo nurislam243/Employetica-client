@@ -6,7 +6,7 @@ const AboutUs = () => {
         {/* Left Side */}
         <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-4xl font-bold text-primary mb-3">About Employetica</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-3">About Employetica</h2>
             <p className="text-base-content text-lg leading-relaxed">
               <strong>Employetica</strong> is our in-house employee management platform built to enhance internal operations.
               Employees can manage their tasks, HR handles recruitment and payroll, and Admins oversee the entire workflow —

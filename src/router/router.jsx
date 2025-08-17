@@ -28,6 +28,7 @@ import EmployeeOverview from "../pages/Dashboard/Employee/EmployeeOverview/Emplo
 import HrOverview from "../pages/Dashboard/HR/HROverview/HrOverview";
 import ErrorPage from "../pages/Error/ErrorPage/ErrorPage";
 import Profile from "../components/dashboard/Profile";
+import AllUpdate from "../pages/AllUpdate/AllUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home /> },
+      { path: "all-update", element: <AllUpdate /> },
       { path: "contact-us", element: <ContactUs /> },
       { path: "register", element: <Registration /> },
       { path: "login", element: <Login /> },

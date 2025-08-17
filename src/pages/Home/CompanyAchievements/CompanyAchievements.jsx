@@ -27,7 +27,7 @@ const achievementsData = [
 const CompanyAchievements = () => {
   return (
     <section className="max-w-[1536px] mx-auto py-16">
-      <h2 className="text-3xl font-bold text-center mb-10 text-primary">
+      <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-10 text-center">
         Company Achievements
       </h2>
 
