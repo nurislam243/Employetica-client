@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Employee Task Logging",
+    "short": "Track and submit daily work activities effortlessly.",
+    "details": "Employees can log their daily work, choose task types, input hours worked, and submit updates. Everything is date-specific and managed for HR review.",
+    "image": "https://i.ibb.co/Sw08ps6f/man-using-external-storage-used-2-1.webp",
+    "role": "Employee"
+  },
+  {
+    "id": 2,
+    "title": "Salary & Payment Tracking",
+    "short": "Seamless monthly payroll and salary history view.",
+    "details": "HR can verify and pay employees, and each payment is saved with transaction details. Employees can view their monthly salary history anytime.",
+    "image": "https://i.ibb.co/BVFJjv86/pexels-tima-miroshnichenko-6693655-1.webp",
+    "role": "HR"
+  },
+  {
+    "id": 3,
+    "title": "Performance Monitoring",
+    "short": "Analyze employee efficiency with visual charts.",
+    "details": "HR can analyze submitted tasks and hours via bar charts to identify top performers and optimize workload distribution.",
+    "image": "https://i.ibb.co/mrsdQRZ8/analyzing-business-chart-1.webp",
+    "role": "HR"
+  },
+  {
+    "id": 4,
+    "title": "Role-based Access",
+    "short": "Admin, HR, and Employee – separate route controls.",
+    "details": "Our system grants dashboard features based on user roles. Admins manage roles and control access. HR oversees employees. Employees focus on workflow updates.",
+    "image": "https://i.ibb.co/ZR8zz2vT/colleagues-working-together-call-center-office-1.webp",
+    "role": "Admin"
+  },
+  {
+    "id": 5,
+    "title": "Time Management Reports",
+    "short": "Track working hours per task with summaries.",
+    "details": "Detailed work hour analytics per employee are available to assess time distribution and productivity across departments or task categories.",
+    "image": "https://i.ibb.co/C3LsSqcv/schedule-planner-task-agenda-checklist-concept-min.webp",
+    "role": "HR"
+  },
+  {
+    "id": 6,
+    "title": "HR & Admin Controls",
+    "short": "Verify employees, promote HR, fire users securely.",
+    "details": "HR and Admin can change user status and control employment access, including toggling verified status, assigning roles, and blocking fired users.",
+    "image": "https://i.ibb.co/jvt6B8vm/tv-game-show-with-two-participants-answering-questions-solving-puzzles-host-smiling-women-participat.webp",
+    "role": "Admin"
+  },
+  {
+    "id": 7,
+    "title": "Contract & Salary Adjustment",
+    "short": "Admin can securely adjust salaries, no decreases allowed.",
+    "details": "Admins can raise salaries of HRs or Employees as needed. The system prevents accidental or malicious salary reductions for security.",
+    "image": "https://i.ibb.co/VprdYSsw/handsome-businessman-white-shirt-holding-folder-with-cash-looking-aside-with-pensive-expression-sitt.webp",
+    "role": "Admin"
+  },
+  {
+    "id": 8,
+    "title": "Contact & Feedback",
+    "short": "Visitors can send messages. Admins review feedback.",
+    "details": "An easy-to-use contact form allows anyone to send inquiries or suggestions. Admin can view all submitted messages through the dashboard.",
+    "image": "https://i.ibb.co/CKy5FtzH/pexels-tima-miroshnichenko-5439436-min.webp",
+    "role": "Employee"
+  },
+  {
+    "id": 9,
+    "title": "Payroll Management",
+    "short": "Automate salary processing and payslip generation.",
+    "details": "Payroll Management automates employee salary processing, deductions, bonuses, and generates monthly payslips without errors.",
+    "image": "https://i.ibb.co.com/gZpkCYns/colleagues-looking-newsletter-discussing.webp",
+    "role": "HR"
+  },
+  {
+    "id": 10,
+    "title": "Employee Onboarding",
+    "short": "Seamless new hire integration into the company.",
+    "details": "Simplify onboarding by automating document collection, training sessions, and task assignments for new employees.",
+    "image": "https://i.ibb.co.com/RTFNFSHT/close-up-young-man-working-smart-phone-laptop.webp",
+    "role": "HR"
+  },
+  {
+    "id": 11,
+    "title": "Recruitment Automation",
+    "short": "AI-powered recruitment workflow optimization.",
+    "details": "Post jobs, screen resumes, and track candidates automatically with smart recruitment tools.",
+    "image": "https://i.ibb.co.com/YBfc5cX9/photo-1560264418-c4445382edbc.webp",
+    "role": "HR"
+  },
+  {
+    "id": 12,
+    "title": "Shift Scheduling",
+    "short": "Optimize workforce schedules with ease.",
+    "details": "Create and manage employee work shifts, leave requests, and replacements with minimal effort.",
+    "image": "https://i.ibb.co.com/3YrkYCKC/photo-1557804506-669a67965ba0.webp",
+    "role": "HR"
+  },
+  {
+    "id": 13,
+    "title": "Time & Attendance",
+    "short": "Track attendance and work hours accurately.",
+    "details": "Monitor employee work hours, late check-ins, and overtime using automated attendance tracking.",
+    "image": "https://i.ibb.co.com/nXcYnrL/photo-1521791055366-0d553872125f.webp",
+    "role": "HR"
+  },
+  {
+    "id": 14,
+    "title": "Training & Development",
+    "short": "Boost skills through structured training programs.",
+    "details": "Provide employees with e-learning, workshops, and professional development opportunities to grow in their roles.",
+    "image": "https://i.ibb.co.com/W48b1fQw/photo-1498050108023-c5249f4df085.webp",
+    "role": "Employee"
+  },
+  {
+    "id": 15,
+    "title": "Employee Benefits Management",
+    "short": "Manage employee perks and benefits easily.",
+    "details": "Centralize all employee benefits such as health insurance, allowances, and wellness perks for easy access.",
+    "image": "https://i.ibb.co.com/nNsX7zRZ/people-using-digital-device-while-meeting.webp",
+    "role": "HR"
+  }
+]

@@ -7,6 +7,7 @@ const UpdateTableAndModal = ({length}) => {
     const [loading, setLoading] = useState(true);
     const [selectedUpdate, setSelectedUpdate] = useState(null);
     const axiosSecure = useAxiosSecure();
+    console.log(updates);
 
     useEffect(() => {
         const fetchUpdates = async () => {

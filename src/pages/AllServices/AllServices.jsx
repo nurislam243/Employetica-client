@@ -18,8 +18,8 @@ import {
   FaGift,
   FaPlaneDeparture
 } from "react-icons/fa";
-import { Link } from "react-router";
 
+// Title wise icon map
 const iconMap = {
   "Employee Task Logging": <FaTasks />,
   "Salary & Payment Tracking": <FaMoneyCheckAlt />,
@@ -39,14 +39,16 @@ const iconMap = {
   "Leave Management": <FaPlaneDeparture />
 };
 
-const Services = () => {
+const AllServices = () => {
   const [services, setServices] = useState([]);
   const [expanded, setExpanded] = useState(null);
+  const [sortOrder, setSortOrder] = useState("Default"); // Default sorting
+  const [filterRole, setFilterRole] = useState("All"); // Default no filter
 
   useEffect(() => {
     fetch("/data/services.json")
       .then((res) => res.json())
-      .then((data) => setServices(data.slice(0, 8))) // প্রথম 8 টি service
+      .then((data) => setServices(data))
       .catch((err) => console.error("Error fetching services:", err));
   }, []);
 
@@ -54,14 +56,59 @@ const Services = () => {
     setExpanded(expanded === id ? null : id);
   };
 
+  // Filter by role
+  const filteredServices =
+    filterRole === "All"
+      ? services
+      : services.filter((s) => s.role === filterRole);
+
+  // Sort by title or keep original order
+  const sortedServices = [...filteredServices].sort((a, b) => {
+    if (sortOrder === "A-Z") return a.title.localeCompare(b.title);
+    if (sortOrder === "Z-A") return b.title.localeCompare(a.title);
+    return 0; // Default: original order
+  });
+
   return (
-    <section className="max-w-[1536px] mx-auto py-16" id="services">
-      <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-12 text-center">
-        Our Services
+    <section className="max-w-[1536px] mx-auto py-16" id="all-services">
+      <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-6 text-center">
+        All Services
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((service) => (
+      {/* Sorting & Filtering */}
+      <div className="flex flex-col sm:flex-row items-center mb-6 gap-4 px-4">
+        {/* Sort */}
+        <div>
+          <label className="font-medium mr-2">Sort:</label>
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="p-2 border rounded"
+          >
+            <option value="Default">Default</option>
+            <option value="A-Z">A-Z</option>
+            <option value="Z-A">Z-A</option>
+          </select>
+        </div>
+
+        {/* Filter */}
+        <div>
+          <label className="font-medium mr-2">Filter by Role:</label>
+          <select
+            value={filterRole}
+            onChange={(e) => setFilterRole(e.target.value)}
+            className="p-2 border rounded"
+          >
+            <option value="All">All</option>
+            <option value="Admin">Admin</option>
+            <option value="HR">HR</option>
+            <option value="Employee">Employee</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+        {sortedServices.map((service) => (
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -92,6 +139,7 @@ const Services = () => {
               >
                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                 <p className="text-sm">{service.details}</p>
+                <p className="mt-2 text-sm font-medium">Role: {service.role}</p>
               </div>
             </div>
 
@@ -109,11 +157,8 @@ const Services = () => {
           </motion.div>
         ))}
       </div>
-      <div className="flex justify-center mt-8">
-        <Link to={'/all-services'} className="btn btn-primary">View All</Link>
-      </div>
     </section>
   );
 };
 
-export default Services;
+export default AllServices;

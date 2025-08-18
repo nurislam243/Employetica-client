@@ -30,6 +30,7 @@ import ErrorPage from "../pages/Error/ErrorPage/ErrorPage";
 import Profile from "../components/dashboard/Profile";
 import AllUpdate from "../pages/AllUpdate/AllUpdate";
 import Blogs from "../pages/Blogs/Blogs";
+import AllServices from "../pages/AllServices/AllServices";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       { path: "/", element: <Home /> },
+      { path: "all-services", element: <AllServices /> },
       { path: "all-update", element: <AllUpdate /> },
       { path: "blogs", element: <Blogs /> },
       { path: "contact-us", element: <ContactUs /> },
